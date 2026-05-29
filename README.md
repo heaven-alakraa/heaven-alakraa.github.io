@@ -1,5 +1,3 @@
-# heaven-alakraa.github.io;
-cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF';
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,21 +75,11 @@ cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF';
     padding: 120px 24px 80px;
   }
 
-  .avatar {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background: var(--light);
-    border: 2px solid var(--border);
-    margin-bottom: 36px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--serif);
-    font-size: 28px;
-    color: var(--gray);
-  }
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
   .hero h1 {
     font-family: var(--serif);
@@ -528,7 +516,9 @@ cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF';
 
 <!-- HERO -->
 <div class="hero">
-  <div class="avatar">H</div>
+  <div class="avatar">
+     <img src="Heaven Alakraa - Headshot.jpg" alt="Heaven Alakraa">
+  </div>
   <h1>Mechanical engineer passionate about solving multidisciplinary problems</h1>
   <p class="hero-sub">Sc.B. candidate in Mechanical Engineering at Brown University, Providence, RI </p>
   <p class="hero-sub"> American Society of Biomechanics, 2026 Recipient of the Carlo De Luca B-SURE Award</p>
@@ -546,7 +536,7 @@ cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF';
   <div class="about-grid">
     <div class="about-text">
       <h2 class="section-title" style="margin-bottom: 24px;">Hi, my name is Heaven.</h2>
-      <p>I'm a mechanical engineering student at Brown University eager to solve problems across multiple fields, spanning from biomedical devices to infrastructure, from robotics to automotive and aeroscpace.</p>
+      <p>I'm a mechanical engineering student at Brown University eager to solve problems across multiple fields, spanning from biomedical devices to infrastructure, from robotics to automotive and aerospace.</p>
       <p>Outside of classes, I've worked across research labs, biotech startups, and teaching roles, building projects that push me to apply theory to physical prototypes. Besides that, you'll find me at the Brown Design Workshop working with the Brown Formula Racing team on the cooling subsystem or enjoying the outdoors (either hiking on rocky mountains or skiing down icy summits) </p>
 
 </div>
