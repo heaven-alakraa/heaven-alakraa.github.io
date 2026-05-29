@@ -1,5 +1,5 @@
-# heaven-alakraa.github.io
-cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF'
+# heaven-alakraa.github.io;
+cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF';
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -536,14 +536,88 @@ cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF'
 <!-- HERO -->
 <div class="hero">
   <div class="avatar">H</div>
-  <h1>Mechanical engineer focused on design, biomedical systems &amp; robotics.</h1>
-  <p class="hero-sub">Sc.B student at Brown University. GPA 3.96. Passionate about solving real-world problems through rigorous engineering design.</p>
-  <p class="hero-sub">Providence, RI · B-SURE Award 2026</p>
+  <h1>Mechanical engineer passionate about solving multidisciplinary problems through rigorous engineering problem solving and innovative design </h1>
+  <p class="hero-sub">Sc.B. candidate in Mechanical Engineering at Brown University, Providence, RI </p>
+  <p class="hero-sub"> American Society of Biomechanics, 2026 Recipient of the Carlo De Luca B-SURE Award</p>
   <div class="hero-btns">
-    <a href="https://www.linkedin.com/in/heaven-alakraa" class="btn btn-dark" target="_blank">LinkedIn ↗</a>
-    <a href="#" class="btn btn-outline">Resume ↗</a>
+    <a href="https://www.linkedin.com/in/heaven-alakraa-b09866325" class="btn btn-dark" target="_blank">LinkedIn ↗</a>
+    <a href="https://docs.google.com/document/d/1A6ctqug-dhaARP5cIEn7oTQ4K7nVh9y6/edit?usp=sharing&ouid=105157443692331014401&rtpof=true&sd=true" class="btn btn-outline">Resume ↗</a>
   </div>
 </div>
+
+<hr class="divider" style="max-width:1100px; margin: 0 auto;">
+
+<!-- ABOUT -->
+<section id="about">
+  <span class="section-label">About</span>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 class="section-title" style="margin-bottom: 24px;">Hi, my name is Heaven.</h2>
+      <p>I'm a mechanical engineering student at Brown University eager to solve problems across multiple fields, spanning from biomedical devices to infrastructure, from robotics to automotive and aeroscpace.</p>
+      <p>Outside of classes, I've worked across research labs, biotech startups, and teaching roles, building projects that push me to apply theory to physical prototypes. Besides that, you'll find me at the Brown Design Workshop working with the Brown Formula Racing team on the cooling subsystem or enjoying the outdoors (either hiking on rocky mountains or skiing down icy summits) </p>
+
+    <div class="about-exp">
+      <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 20px;">Experience</div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <div>
+            <div class="exp-org">RIH Bioengineering Lab</div>
+            <div class="exp-role">Engineering Research Intern</div>
+          </div>
+          <div class="exp-date">May 2026–</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <div>
+            <div class="exp-org">Lilac Biosciences</div>
+            <div class="exp-role">Product Design Intern</div>
+          </div>
+          <div class="exp-date">Jan 2025–</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <div>
+            <div class="exp-org">Tripathi Lab, Brown</div>
+            <div class="exp-role">Research Assistant</div>
+          </div>
+          <div class="exp-date">Jan–Sep 2025</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <div>
+            <div class="exp-org">Brown Engineering</div>
+            <div class="exp-role">Teaching Fellow</div>
+          </div>
+          <div class="exp-date">Aug–Jan 2026</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <div>
+            <div class="exp-org">Brown FSAE</div>
+            <div class="exp-role">Cooling &amp; Radiator Testing Engineer</div>
+          </div>
+          <div class="exp-date">Sep 2025–</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px;">Education</div>
+        <div class="exp-org">Brown University</div>
+        <div class="exp-role">Sc.B Mechanical Engineering · GPA 3.96</div>
+        <div class="exp-date" style="margin-top: 4px;">2024–2028</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <hr class="divider" style="max-width:1100px; margin: 0 auto;">
 
@@ -715,83 +789,6 @@ cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF'
 
 <hr class="divider" style="max-width:1100px; margin: 0 auto;">
 
-<!-- ABOUT -->
-<section id="about">
-  <span class="section-label">About</span>
-  <div class="about-grid">
-    <div class="about-text">
-      <h2 class="section-title" style="margin-bottom: 24px;">Hi, I'm Heaven.</h2>
-      <p>I'm a mechanical engineering student at Brown University (GPA 3.96) with a passion for hands-on design, biomedical devices, and making things that actually work in the real world.</p>
-      <p>I've worked across research labs, biotech startups, and teaching roles — all while building projects that push me to apply theory to physical prototypes.</p>
-      <p>I'm happy to explore any industry where careful engineering design can make a meaningful impact — from medical devices to robotics to consumer products.</p>
-      <p>When I'm not in the lab, I'm on the Brown Formula Racing team working on cooling systems for the race car.</p>
-    </div>
-
-    <div class="about-exp">
-      <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 20px;">Experience</div>
-
-      <div class="exp-item">
-        <div class="exp-top">
-          <div>
-            <div class="exp-org">RIH Bioengineering Lab</div>
-            <div class="exp-role">Engineering Research Intern</div>
-          </div>
-          <div class="exp-date">May 2026–</div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-top">
-          <div>
-            <div class="exp-org">Lilac Biosciences</div>
-            <div class="exp-role">Product Design Intern</div>
-          </div>
-          <div class="exp-date">Jan 2025–</div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-top">
-          <div>
-            <div class="exp-org">Tripathi Lab, Brown</div>
-            <div class="exp-role">Research Assistant</div>
-          </div>
-          <div class="exp-date">Jan–Sep 2025</div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-top">
-          <div>
-            <div class="exp-org">Brown Engineering</div>
-            <div class="exp-role">Teaching Fellow</div>
-          </div>
-          <div class="exp-date">Aug–Jan 2026</div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-top">
-          <div>
-            <div class="exp-org">Brown FSAE</div>
-            <div class="exp-role">Cooling &amp; Radiator Testing Engineer</div>
-          </div>
-          <div class="exp-date">Sep 2025–</div>
-        </div>
-      </div>
-
-      <div style="margin-top: 24px;">
-        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px;">Education</div>
-        <div class="exp-org">Brown University</div>
-        <div class="exp-role">Sc.B Mechanical Engineering · GPA 3.96</div>
-        <div class="exp-date" style="margin-top: 4px;">2024–2028</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider" style="max-width:1100px; margin: 0 auto;">
-
 <!-- CONTACT -->
 <div class="contact-section" id="contact">
   <div class="contact-inner">
@@ -800,7 +797,7 @@ cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF'
     <p style="color: var(--gray); margin-top: 16px; font-size: 15px; line-height: 1.8;">Whether it's a research collaboration, internship opportunity, or just a conversation about engineering — I'd love to hear from you.</p>
     <div class="contact-links">
       <a href="mailto:heaven_alakraa@brown.edu" class="btn btn-dark">Email me ↗</a>
-      <a href="https://www.linkedin.com/in/heaven-alakraa" class="btn btn-outline" target="_blank">LinkedIn ↗</a>
+      <a href="https://www.linkedin.com/in/heaven-alakraa-b09866325" class="btn btn-outline" target="_blank">LinkedIn ↗</a>
     </div>
   </div>
 </div>
