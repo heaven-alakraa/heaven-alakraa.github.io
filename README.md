@@ -65,13 +65,6 @@ cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF';
 
   .nav-pill a:hover { background: var(--light); }
 
-  .nav-pill a.contact-btn {
-    background: var(--black);
-    color: var(--white);
-    font-weight: 500;
-  }
-
-  .nav-pill a.contact-btn:hover { background: #333; }
 
   /* HERO */
   .hero {
