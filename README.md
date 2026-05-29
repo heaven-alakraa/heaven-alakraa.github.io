@@ -1487,5 +1487,3 @@ document.addEventListener('keydown', e => {
 </script>
 </body>
 </html>
-HTMLEOF
-echo "Done"
