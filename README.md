@@ -534,7 +534,7 @@ cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF';
   <p class="hero-sub"> American Society of Biomechanics, 2026 Recipient of the Carlo De Luca B-SURE Award</p>
   <div class="hero-btns">
     <a href="https://www.linkedin.com/in/heaven-alakraa-b09866325" class="btn btn-outline" target="_blank">LinkedIn ↗</a>
-    <a href="https://docs.google.com/document/d/1A6ctqug-dhaARP5cIEn7oTQ4K7nVh9y6/edit?usp=sharing&ouid=105157443692331014401&rtpof=true&sd=true" class="btn btn-outline">Resume ↗</a>
+    <a href="https://docs.google.com/document/d/1A6ctqug-dhaARP5cIEn7oTQ4K7nVh9y6/edit?usp=sharing&ouid=105157443692331014401&rtpof=true&sd=true" class="btn btn-outline" target="_blank">Resume ↗</a>
   </div>
 </div>
 
