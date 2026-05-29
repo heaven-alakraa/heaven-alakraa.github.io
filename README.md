@@ -75,11 +75,22 @@
     padding: 120px 24px 80px;
   }
 
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+ .avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--light);
+    border: 2px solid var(--border);
+    margin-bottom: 36px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--gray);
+  }
+
 
   .hero h1 {
     font-family: var(--serif);
