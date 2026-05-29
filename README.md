@@ -527,20 +527,20 @@ cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF';
 <!-- NAV -->
 <nav>
   <div class="nav-pill">
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="#contact" class="contact-btn">Contact</a>
+   <a href="#about">About</a>
+   <a href="#projects">Projects</a> 
+   <a href="#contact" class="contact-btn">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
   <div class="avatar">H</div>
-  <h1>Mechanical engineer passionate about solving multidisciplinary problems through rigorous engineering problem solving and innovative design </h1>
+  <h1>Mechanical engineer passionate about solving multidisciplinary problems</h1>
   <p class="hero-sub">Sc.B. candidate in Mechanical Engineering at Brown University, Providence, RI </p>
   <p class="hero-sub"> American Society of Biomechanics, 2026 Recipient of the Carlo De Luca B-SURE Award</p>
   <div class="hero-btns">
-    <a href="https://www.linkedin.com/in/heaven-alakraa-b09866325" class="btn btn-dark" target="_blank">LinkedIn ↗</a>
+    <a href="https://www.linkedin.com/in/heaven-alakraa-b09866325" class="btn btn-outline" target="_blank">LinkedIn ↗</a>
     <a href="https://docs.google.com/document/d/1A6ctqug-dhaARP5cIEn7oTQ4K7nVh9y6/edit?usp=sharing&ouid=105157443692331014401&rtpof=true&sd=true" class="btn btn-outline">Resume ↗</a>
   </div>
 </div>
@@ -555,6 +555,8 @@ cat > /mnt/user-data/outputs/heaven_alakraa_portfolio.html << 'HTMLEOF';
       <h2 class="section-title" style="margin-bottom: 24px;">Hi, my name is Heaven.</h2>
       <p>I'm a mechanical engineering student at Brown University eager to solve problems across multiple fields, spanning from biomedical devices to infrastructure, from robotics to automotive and aeroscpace.</p>
       <p>Outside of classes, I've worked across research labs, biotech startups, and teaching roles, building projects that push me to apply theory to physical prototypes. Besides that, you'll find me at the Brown Design Workshop working with the Brown Formula Racing team on the cooling subsystem or enjoying the outdoors (either hiking on rocky mountains or skiing down icy summits) </p>
+
+</div>
 
     <div class="about-exp">
       <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 20px;">Experience</div>
