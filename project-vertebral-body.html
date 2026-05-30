@@ -7,65 +7,159 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* image + layout helpers kept local so there's nothing to merge into styles.css */
+  .media-figure img {
+    width: 100%; display: block; border-radius: 12px;
+    border: 1px solid var(--border); background: var(--light);
+    object-fit: contain; max-height: 520px;
+  }
+  .media-figure.center img { width: auto; max-width: 680px; margin: 0 auto; }
+
+  /* screening funnel */
+  .funnel { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 32px 0 8px; }
+  .funnel-step {
+    flex: 1; min-width: 110px; background: var(--white);
+    border: 1px solid var(--border); border-radius: 12px; padding: 18px 14px; text-align: center;
+  }
+  .funnel-step.final { background: var(--black); border-color: var(--black); }
+  .funnel-num { font-family: var(--serif); font-size: 28px; line-height: 1; margin-bottom: 6px; }
+  .funnel-step.final .funnel-num { color: var(--white); }
+  .funnel-lbl { font-size: 12px; color: var(--gray); letter-spacing: 0.02em; line-height: 1.4; }
+  .funnel-step.final .funnel-lbl { color: rgba(255,255,255,0.78); }
+  .funnel-arrow { display: flex; align-items: center; color: var(--border); font-size: 18px; }
+  @media (max-width: 700px) { .funnel-arrow { display: none; } }
+</style>
 </head>
 <body>
+<!-- NAV -->
+<nav>
+  <div class="nav-pill">
+    <a href="index.html#intro">Intro</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#interactive">Interactive</a>
+    <a href="index.html#skills">Skillset</a>
+  </div>
+</nav>
 
 <article class="project-page">
   <a class="back-link" href="index.html#projects">← Back to projects</a>
 
-  <div class="pp-year">2025</div>
-  <h1 class="pp-title">Next-Gen Material Selection — Vertebral Body Replacement</h1>
+  <div class="pp-year">2025 · ENGN 1490 · Biomaterials</div>
+  <h1 class="pp-title">Next-Generation Material Selection for Vertebral Body Replacement</h1>
   <div class="pp-tags">
-    <span class="project-tag">Ansys Granta</span>
-    <span class="project-tag">FEA</span>
-    <span class="project-tag">Biomedical</span>
+    <span class="project-tag">Ansys Granta EduPack</span>
+    <span class="project-tag">Material Selection</span>
+    <span class="project-tag">Biomechanics</span>
+    <span class="project-tag">Implant Design</span>
   </div>
-  <p class="pp-lead">A material selection case report identifying next-generation candidates for vertebral body replacement (VBR) implants.</p>
+  <p class="pp-lead">A sole-authored case report that searches the entire engineering-materials universe — 4,395 materials — for a next-generation polymer to replace titanium in spinal implants, reducing stress shielding by mechanically matching bone. The recommendation: polyetherimide (PEI).</p>
 
-  <figure class="media-figure">
-    <div class="img-placeholder">Add an Ashby chart or implant diagram here</div>
-    <figcaption>Material selection chart (replace with your image)</figcaption>
-  </figure>
-
+  <!-- ===== AT A GLANCE ===== -->
   <section class="pp-section">
-    <h2>Overview</h2>
-    <p>I translated clinical needs and finite element analysis results into quantitative design criteria, then screened thousands of materials to find the best fit.</p>
-    <ul>
-      <li>Translated clinical needs and FEA results into quantitative mechanical and biological design criteria.</li>
-      <li>Screened 4,395 materials in Ansys Granta Edupack and the ASM Medical Materials databases.</li>
-      <li>Identified Polyetherimide (PEI) as a leading candidate for future clinical application based on mechanical and biocompatibility properties.</li>
-    </ul>
+    <h2>At a glance</h2>
+    <p>Titanium is a current standard for vertebral body replacements, but it is far stiffer than bone — so it carries load the surrounding vertebrae should carry, causing them to weaken over time (stress shielding). PEEK matches bone better but integrates poorly with it. Using Ansys Granta EduPack, I built a multi-stage screening pipeline to find a material that balances bone-like stiffness, strength, toughness, durability, and biocompatibility.</p>
+    <div class="stat-row">
+      <div class="stat-cell"><div class="stat-num">4,395</div><div class="stat-lbl">materials screened</div></div>
+      <div class="stat-cell"><div class="stat-num">8</div><div class="stat-lbl">finalists after all stages</div></div>
+      <div class="stat-cell"><div class="stat-num">PEI</div><div class="stat-lbl">recommended material</div></div>
+      <div class="stat-cell"><div class="stat-num">FDA✓</div><div class="stat-lbl">approved for bone fixation*</div></div>
+    </div>
+    <p style="font-size:13px; color:var(--gray);">*PEI is already FDA-approved for external bone-fixation systems (e.g. the WristJack and Synthes ADRF fixators), a strong signal of its osteocompatibility. Sole-authored report for ENGN 1490 Biomaterials.</p>
   </section>
 
+  <!-- ===== THE PROBLEM ===== -->
   <section class="pp-section">
-    <h2>Process</h2>
-    <div class="step-block">
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <h3>Define requirements</h3>
-        <p>Set mechanical (stiffness, strength, fatigue) and biological (biocompatibility, imaging compatibility) constraints from clinical context and FEA.</p>
-      </div>
+    <h2>The problem: stress shielding</h2>
+    <p>Osteoporosis, spinal tumors, and infections can compromise the mechanical stability of the spine, and a vertebral body replacement restores it after the diseased vertebra is resected. The implant must bear high physiological compressive loads and integrate with surrounding bone for the long term. Titanium is biocompatible and corrosion-resistant, but its stiffness (~110 GPa) dwarfs that of cortical bone (3–20 GPa). When an implant is far stiffer than the bone around it, it absorbs most of the load — and unloaded bone resorbs and weakens. PEEK sits much closer to bone mechanically and is radiolucent, but it integrates poorly with bone. The goal: a material stiff enough to be safe, compliant enough to share load, and biologically suited to long-term implantation.</p>
+  </section>
+
+  <!-- ===== METHOD / FUNNEL ===== -->
+  <section class="pp-section">
+    <h2>Screening method</h2>
+    <p>Starting from the full "All materials" universe in Ansys Granta EduPack (Bioengineering Level 3), I applied a sequence of quantitative limit stages, then qualitative refinement stages, progressively narrowing 4,395 materials down to a short list of finalists.</p>
+
+    <div class="funnel">
+      <div class="funnel-step"><div class="funnel-num">4,395</div><div class="funnel-lbl">Full database</div></div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step"><div class="funnel-num">154</div><div class="funnel-lbl">After 4 mechanical criteria</div></div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step"><div class="funnel-num">71</div><div class="funnel-lbl">After durability &amp; sterilizability</div></div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step"><div class="funnel-num">8</div><div class="funnel-lbl">Finalists</div></div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step final"><div class="funnel-num">PEI</div><div class="funnel-lbl">Recommendation</div></div>
     </div>
-    <div class="step-block">
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <h3>Database screening</h3>
-        <p>Filtered 4,395 candidates in Ansys Granta Edupack and ASM Medical Materials against the design criteria.</p>
+
+    <h3 style="font-family:var(--serif); font-weight:400; font-size:20px; margin:36px 0 8px;">Selection criteria</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>Stage</th><th>Criterion</th><th>Threshold</th><th>Why</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Initial</td><td>Young's modulus</td><td>3–25 GPa</td><td>Match cortical bone (3–20 GPa); cap at PEEK's upper limit</td></tr>
+        <tr><td>Initial</td><td>Compressive strength</td><td>&gt; 92 MPa</td><td>Exceed PEEK (~91.5 MPa, from a 14.1 kN failure load)</td></tr>
+        <tr><td>Initial</td><td>Fracture toughness</td><td>&gt; 6 MPa·m½</td><td>Exceed bone's upper toughness (3–6 MPa·m½)</td></tr>
+        <tr><td>Initial</td><td>Elongation</td><td>≥ 2%</td><td>Avoid brittle, catastrophic failure</td></tr>
+        <tr><td>Refine</td><td>Salt-water durability</td><td>Excellent</td><td>Proxy for corrosion resistance in vivo</td></tr>
+        <tr><td>Refine</td><td>Sterilizability</td><td>Excellent</td><td>Survive ethylene oxide, radiation, or autoclave</td></tr>
+        <tr><td>Refine</td><td>Modulus &amp; strength</td><td>≥ 20 GPa · ≥ 172 MPa</td><td>Surpass PEEK's lower bounds</td></tr>
+      </tbody>
+    </table>
+
+    <!--
+      Optional: add your two Ansys Granta selection charts here.
+      Save them in a "vbr" folder (e.g. vbr/granta-initial.png and vbr/granta-final.png),
+      then delete each placeholder div and uncomment the matching <img>.
+    -->
+    <figure class="media-figure center" style="margin-top:36px;">
+      <div class="img-placeholder">Optional: Granta Figure 1 — modulus vs. compressive strength after initial screening (save as vbr/granta-initial.png)</div>
+      <!-- <img src="vbr/granta-initial.png" alt="Granta plot: Young's modulus vs compressive strength after initial selection"> -->
+      <figcaption>Initial screening — Young's modulus vs. compressive strength, with material-class envelopes.</figcaption>
+    </figure>
+    <figure class="media-figure center">
+      <div class="img-placeholder">Optional: Granta Figure 2 — the 8 finalists after refinement (save as vbr/granta-final.png)</div>
+      <!-- <img src="vbr/granta-final.png" alt="Granta plot: the eight finalist materials after refinement"> -->
+      <figcaption>After refinement — the eight finalists (composites and high-performance plastics).</figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== RESULT ===== -->
+  <section class="pp-section">
+    <h2>Result: polyetherimide (PEI)</h2>
+    <p>Eight materials survived every stage: epoxy SMC and polyester/E-glass composites, PAI, PEEK, PEI, PI, and two PPS variants. PEEK was set aside as already in clinical use. Epoxy (hydrolysis-prone, cytotoxic) and polyester/E-glass (borderline brittle at 2% elongation) were ruled out, and pure PPS suffers low stiffness and osteoconductivity. That left PI, PAI, and PEI — all promising, but PI and PAI lack FDA orthopedic approval. PEI won out: bone-like stiffness, compressive strength within PEEK's range, demonstrated in-vitro biocompatibility, the highest fatigue strength of the finalists, a lower price than PAI and PI, and — uniquely — existing FDA approval for external bone-fixation systems.</p>
+
+    <div style="margin: 36px 0 8px;">
+      <div style="display:flex; flex-wrap:wrap; gap:18px; margin-bottom:14px; font-size:13px; color:var(--gray);">
+        <span style="display:flex; align-items:center; gap:6px;"><span style="width:11px;height:11px;border-radius:2px;background:#111;"></span>Young's modulus (GPa)</span>
       </div>
-    </div>
-    <div class="step-block">
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <h3>Ranking &amp; selection</h3>
-        <p>Compared finalists on performance indices and identified PEI as the leading next-generation candidate.</p>
+      <div style="position: relative; width: 100%; height: 300px;">
+        <canvas id="vbrChart" role="img" aria-label="Young's modulus: cortical bone up to about 20 GPa, recommended carbon-fiber PEI about 20 GPa, PEEK about 24 GPa, titanium alloy about 110 GPa. PEI and PEEK sit near bone while titanium is several times stiffer.">Cortical bone reaches ~20 GPa; the selected PEI grade (~20 GPa) and PEEK (~24 GPa) sit near it, while titanium (~110 GPa) is several times stiffer.</canvas>
       </div>
+      <p style="font-size:13px; color:var(--gray); text-align:center; margin-top:12px;">The stiffness gap that matters. Cortical bone spans ~3–20 GPa; the recommended carbon-fiber PEI grade sits near its upper end, while titanium towers ~5× above it — the root of stress shielding. (Titanium and PEEK values are typical references for context.)</p>
     </div>
   </section>
 
+  <!-- ===== POSTER ===== -->
   <section class="pp-section">
-    <h2>Gallery</h2>
-    <figure class="media-figure"><div class="img-placeholder">Granta screening results</div></figure>
-    <figure class="media-figure"><div class="img-placeholder">FEA result of VBR implant</div></figure>
+    <h2>Findings poster</h2>
+    <p>I summarized the background, screening pipeline, and final recommendation in a conference-style poster.</p>
+    <!--
+      Save your poster as an image for inline display (vbr/poster.png), OR keep it as a PDF
+      and rely on the button below. For the image: delete the placeholder and uncomment the <img>.
+    -->
+    <figure class="media-figure center">
+      <div class="img-placeholder">Optional: add your poster image here — save as vbr/poster.png</div>
+      <!-- <img src="vbr/poster.png" alt="Vertebral body replacement material-selection poster"> -->
+    </figure>
+    <a class="btn btn-outline" href="vbr/Heaven Alakraa - Biomaterials Presentation.pdf" target="_blank" rel="noopener">View full poster (PDF) ↗</a>
+  </section>
+
+  <!-- ===== NEXT STEPS ===== -->
+  <section class="pp-section">
+    <h2>Where this goes next</h2>
+    <p>This study established <em>what</em> material to use; the natural next step is to test <em>how it behaves as a device</em>. I'm planning to model a PEI vertebral-body implant in SolidWorks and run a finite-element simulation under physiological compressive load, comparing its stress distribution against a titanium equivalent to quantify the reduction in stress shielding. Beyond that, PEI's long-term in-vivo wear, degradation, and osseointegration — potentially aided by bioactive coatings or fiber reinforcement — remain open questions for future work.</p>
   </section>
 
   <a class="back-link" href="index.html#projects" style="margin-top:48px;">← Back to projects</a>
@@ -78,6 +172,31 @@
     <a href="index.html#about">About</a>
   </div>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+  new Chart(document.getElementById('vbrChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Cortical bone (≤20)', 'PEI — CF grade (~20)', 'PEEK (~24)', 'Titanium alloy (~110)'],
+      datasets: [{
+        data: [20, 20, 24, 110],
+        backgroundColor: ['#888780', '#c89b5a', '#b4b2a9', '#111'],
+        borderRadius: 6
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false },
+        tooltip: { callbacks: { label: (c) => '~' + c.parsed.x + ' GPa' } } },
+      scales: {
+        x: { title: { display: true, text: "Young's modulus (GPa)" }, grid: { color: 'rgba(0,0,0,0.06)' }, beginAtZero: true },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+</script>
 
 </body>
 </html>
