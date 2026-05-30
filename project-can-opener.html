@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Can Opener Design &amp; Analysis — Heaven Alakraa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<article class="project-page">
+  <a class="back-link" href="index.html#projects">← Back to projects</a>
+
+  <div class="pp-year">2024–2025</div>
+  <h1 class="pp-title">Can Opener Mechanical Design &amp; Analysis</h1>
+  <div class="pp-tags">
+    <span class="project-tag">SolidWorks</span>
+    <span class="project-tag">FEA</span>
+    <span class="project-tag">Motion Analysis</span>
+    <span class="project-tag">Engineering Drawings</span>
+  </div>
+  <p class="pp-lead">A fully constrained multi-component can opener assembly designed from the ground up in SolidWorks — my primary project for Computer Aided Visualization and Design.</p>
+
+  <!-- HERO IMAGE: replace src with your render. Delete the placeholder div if you add an <img>. -->
+  <figure class="media-figure">
+    <div class="img-placeholder">Add a hero render here — e.g. &lt;img src="canopener/hero.jpg"&gt;</div>
+    <!-- <img src="canopener/hero.jpg" alt="Can opener assembly render"> -->
+    <figcaption>Full assembly render (replace with your image)</figcaption>
+  </figure>
+
+  <!-- ===== INTERACTIVE 3D ===== -->
+  <section class="pp-section">
+    <h2>Interactive 3D Model</h2>
+    <p>Orbit, zoom, and explore the real assembly below.</p>
+    <!--
+      Paste your Sketchfab <iframe> in place of the placeholder div.
+      (Free account at sketchfab.com > upload your SolidWorks/STL export > Share > Embed.)
+    -->
+    <div class="embed-frame">
+      <div class="embed-placeholder">
+        <strong style="color:var(--black); font-size:15px; margin-bottom:8px;">3D model goes here</strong>
+        Upload your assembly to Sketchfab and paste the embed code in place of this box.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OVERVIEW ===== -->
+  <section class="pp-section">
+    <h2>Overview</h2>
+    <p>I designed and fully constrained every component of this can opener, then validated the design through simulation and produced a complete manufacturing drawing package.</p>
+    <ul>
+      <li>Produced detailed 2D engineering drawings, a fully mated assembly, exploded views, and a complete drawing package for all components.</li>
+      <li>Conducted static Finite Element Analysis (FEA) on components under operational loading, validating the design against stainless steel's yield strength.</li>
+      <li>Performed motion analysis on the gear train, quantifying mechanical advantage and contact force distribution across a full rotation cycle.</li>
+      <li>Designed the gear tooth profile, frame geometry, and ergonomic handle form.</li>
+    </ul>
+  </section>
+
+  <!-- ===== PROCESS / STEPS ===== -->
+  <section class="pp-section">
+    <h2>Design Process</h2>
+
+    <div class="step-block">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Concept &amp; component breakdown</h3>
+        <p>Identified each part — handle body, second arm, drive gear, feed gear, cutting wheel, screws, knob, and frame — and defined how they mate.</p>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Part modeling in SolidWorks</h3>
+        <p>Modeled each component individually, including the involute gear tooth profile and the ergonomic handle.</p>
+        <!-- Add a screenshot: <figure class="media-figure"><img src="canopener/part.jpg"></figure> -->
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Assembly &amp; mating</h3>
+        <p>Built a fully constrained assembly with zero degrees of freedom error, then generated exploded views.</p>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>FEA &amp; motion analysis</h3>
+        <p>Ran static FEA under operating loads and a motion study across a full rotation to characterize mechanical advantage and gear contact forces.</p>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h3>Drawing package</h3>
+        <p>Delivered dimensioned 2D drawings and a complete documentation set ready for manufacture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIDEO ===== -->
+  <section class="pp-section">
+    <h2>Walkthrough Video</h2>
+    <p>Embed a motion-study or assembly animation here.</p>
+    <!--
+      OPTION A (YouTube/Vimeo): paste the embed iframe in place of the comment below.
+      <div class="video-embed"><iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe></div>
+
+      OPTION B (a local .mp4 file in your repo):
+      <div class="video-embed"><video src="canopener/motion-study.mp4" controls></video></div>
+    -->
+    <div class="video-embed">
+      <div class="embed-placeholder">Add a YouTube/Vimeo embed or a local .mp4 here (see HTML comment).</div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="pp-section">
+    <h2>Gallery</h2>
+    <figure class="media-figure"><div class="img-placeholder">Drawing package / exploded view image</div></figure>
+    <figure class="media-figure"><div class="img-placeholder">FEA result screenshot</div></figure>
+  </section>
+
+  <a class="back-link" href="index.html#projects" style="margin-top:48px;">← Back to projects</a>
+</article>
+
+<footer>
+  <span>© Heaven Alakraa — 2026</span>
+  <div style="display:flex; gap:20px;">
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#about">About</a>
+  </div>
+</footer>
+
+</body>
+</html>
