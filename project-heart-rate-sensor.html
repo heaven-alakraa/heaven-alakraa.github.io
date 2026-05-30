@@ -18,9 +18,10 @@
   .media-figure.full img { width: 100%; max-width: 100%; max-height: none; }
   .media-figure.tall img { max-height: 600px; width: auto; max-width: 100%; margin: 0 auto; }
 
-  .figure-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; align-items: start; }
+  /* two figures side by side: show each in FULL (no cropping), matched height */
+  .figure-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; align-items: end; }
   .figure-row .media-figure { margin: 0; }
-  .figure-row .media-figure img { max-height: 360px; }
+  .figure-row .media-figure img { height: 460px; max-height: 460px; width: 100%; object-fit: contain; background: var(--light); }
 
   /* click-to-zoom */
   .media-figure img { cursor: zoom-in; transition: transform 0.15s, box-shadow 0.15s; }
@@ -62,11 +63,17 @@
   </div>
   <p class="pp-lead">A working pulse monitor built from scratch — an Arduino reading a MAX30102 pulse-oximeter over I²C, computing live BPM, and showing it on an OLED with a buzzer beat. I then used it as the springboard for a study on how Formula 1 safety gear affects a driver's heart rate.</p>
 
-  <!-- HERO: the build photo -->
-  <figure class="media-figure full">
-    <img src="hr sensor/build.jpg" alt="Arduino, MAX30102 sensor, OLED, and buzzer wired on a breadboard">
-    <figcaption>The completed circuit — Arduino Uno, MAX30102 pulse-oximeter, SSD1306 OLED, and a buzzer on a breadboard.</figcaption>
-  </figure>
+  <!-- HERO: real build photo + schematic, side by side -->
+  <div class="figure-row">
+    <figure class="media-figure">
+      <img src="hr/build.jpg" alt="Arduino, MAX30102 sensor, OLED, and buzzer wired on a breadboard">
+      <figcaption>The real build — Arduino Uno, MAX30102, OLED, and buzzer on a breadboard.</figcaption>
+    </figure>
+    <figure class="media-figure">
+      <img src="hr/schematic.png" alt="Circuit schematic of the heart rate sensor">
+      <figcaption>Circuit schematic of the same wiring.</figcaption>
+    </figure>
+  </div>
 
   <!-- ===== AT A GLANCE ===== -->
   <section class="pp-section">
@@ -132,7 +139,7 @@ display.print(beatAvg); display.print(" BPM");</div>
     <p>With a working monitor in hand, I framed an engineering question around it: which piece of a Formula 1 driver's safety gear most affects their heart rate, and how does heart rate correlate with speed around a lap? The idea was that a driver's physical and psychological load — and therefore cardiovascular strain — depends on what protection they're wearing. I designed a four-condition protocol (full gear as control, then helmet only, racing suit only, and rib protectors only) measured at checkpoints around the Bahrain International Circuit, and analyzed the resulting BPM curves in MATLAB.</p>
 
     <figure class="media-figure full">
-      <img src="hr sensor/poster.png" alt="Poster: heart rate vs F1 safety gear study">
+      <img src="hr/poster.png" alt="Poster: heart rate vs F1 safety gear study">
       <figcaption>Study poster — objective, protocol, results, and analysis.</figcaption>
     </figure>
 
