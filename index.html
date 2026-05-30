@@ -11,8 +11,19 @@
 </head>
 <body>
 
+<!-- ============================ NAV ============================ -->
+<nav>
+  <div class="nav-pill">
+    <a href="#intro">Intro</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#interactive">Interactive</a>
+    <a href="#skills">Skillset</a>
+  </div>
+</nav>
+
 <!-- ============================ HERO ============================ -->
-<div class="hero">
+<div class="hero" id="intro">
   <div class="hero-grid">
 
     <!-- LEFT: headshot + credentials -->
@@ -21,24 +32,22 @@
            same folder of your repo, or the image won't show. -->
       <img class="headshot" src="Heaven Alakraa - Headshot.jpg" alt="Heaven Alakraa">
       <p class="hero-cred">
-        <strong>Sc.B. candidate in Mechanical Engineering</strong> at Brown University,
+        Sc.B. candidate in Mechanical Engineering at Brown University,
         Providence, RI.<br><br>
         American Society of Biomechanics — 2026 Recipient of the
         Carlo De Luca B-SURE Award.
       </p>
     </div>
 
-    <!-- RIGHT: intro + buttons -->
+    <!-- RIGHT: name + tagline + buttons -->
     <div class="hero-right">
-      <h1>Mechanical engineer passionate about solving multidisciplinary problems</h1>
-      <p class="hero-intro">
-        I work across biomedical devices, infrastructure, robotics, automotive, and
-        aerospace — turning theory into physical prototypes through research labs,
-        biotech startups, and the Brown Design Workshop.
+      <h1>Hi, my name is Heaven.</h1>
+      <p class="hero-tagline">
+        A mechanical engineer passionate about solving multidisciplinary problems.
       </p>
       <div class="hero-btns">
         <a href="#projects" class="btn btn-dark">View Projects</a>
-        <a href="https://docs.google.com/document/d/1A6ctqug-dhaARP5cIEn7oTQ4K7nVh9y6/edit?usp=sharing&ouid=105157443692331014401&rtpof=true&sd=true" class="btn btn-outline" target="_blank" rel="noopener">Resume ↗</a>
+        <a href="resume.html" class="btn btn-outline">Resume ↗</a>
         <a href="https://www.linkedin.com/in/heaven-alakraa-b09866325" class="btn btn-outline" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
@@ -50,12 +59,18 @@
 
 <!-- ============================ ABOUT ============================ -->
 <section id="about">
-  <span class="section-label">About</span>
   <div class="about-grid">
     <div class="about-text">
-      <h2 class="section-title" style="margin-bottom: 24px;">Hi, my name is Heaven.</h2>
+      <div class="about-subhead">About</div>
       <p>I'm a mechanical engineering student at Brown University eager to solve problems across multiple fields, spanning from biomedical devices to infrastructure, from robotics to automotive and aerospace.</p>
       <p>Outside of classes, I've worked across research labs, biotech startups, and teaching roles, building projects that push me to apply theory to physical prototypes. Besides that, you'll find me at the Brown Design Workshop working with the Brown Formula Racing team on the cooling subsystem or enjoying the outdoors — either hiking on rocky mountains or skiing down icy summits.</p>
+
+      <div style="margin-top: 36px;">
+        <div class="about-subhead" style="margin-bottom: 12px;">Education</div>
+        <div class="exp-org">Brown University</div>
+        <div class="exp-role">Sc.B Mechanical Engineering · GPA 3.96</div>
+        <div class="exp-date" style="margin-top: 4px;">2024–2028</div>
+      </div>
     </div>
     <div class="about-exp">
       <div class="about-subhead">Experience</div>
@@ -103,12 +118,6 @@
           </div>
           <div class="exp-date">Sep 2025–</div>
         </div>
-      </div>
-      <div style="margin-top: 24px;">
-        <div class="about-subhead" style="margin-bottom: 12px;">Education</div>
-        <div class="exp-org">Brown University</div>
-        <div class="exp-role">Sc.B Mechanical Engineering · GPA 3.96</div>
-        <div class="exp-date" style="margin-top: 4px;">2024–2028</div>
       </div>
     </div>
   </div>
@@ -199,8 +208,8 @@
       </div>
     </a>
 
-    <!-- Pendulum Testing -->
-    <a class="project-card" href="project-pendulum.html">
+    <!-- Pendulum Testing (full-width for now; remove "wide" when you add a 7th project) -->
+    <a class="project-card wide" href="project-pendulum.html">
       <span class="project-arrow">↗</span>
       <div>
         <div class="project-year">2026 – Present</div>
@@ -256,34 +265,77 @@
 <hr class="divider" style="max-width:1100px; margin: 0 auto;">
 
 <!-- ============================ SKILLS ============================ -->
-<section>
-  <span class="section-label">Capabilities</span>
+<section id="skills">
+  <span class="section-label">Some of what I've learned</span>
   <h2 class="section-title">Skills &amp; Tools</h2>
-  <div class="skills-grid">
-    <div class="skill-cell">
-      <div class="skill-category">CAD &amp; Design</div>
-      <div class="skill-items">SolidWorks<br>Fusion 360<br>Onshape</div>
+  <div class="skills-list">
+
+    <div class="skill-row">
+      <div class="skill-cat"><span class="skill-cat-num">01</span>CAD &amp; Design</div>
+      <div class="skill-pills">
+        <span class="pill">SolidWorks</span>
+        <span class="pill">Fusion 360</span>
+        <span class="pill">Onshape</span>
+        <span class="pill">Engineering Drawings</span>
+      </div>
     </div>
-    <div class="skill-cell">
-      <div class="skill-category">Analysis</div>
-      <div class="skill-items">FEA (Ansys)<br>MATLAB<br>COMSOL</div>
+
+    <div class="skill-row">
+      <div class="skill-cat"><span class="skill-cat-num">02</span>Simulation &amp; Analysis</div>
+      <div class="skill-pills">
+        <span class="pill">FEA</span>
+        <span class="pill">COMSOL</span>
+        <span class="pill">Ansys Granta</span>
+        <span class="pill">Motion Analysis</span>
+        <span class="pill">MATLAB</span>
+      </div>
     </div>
-    <div class="skill-cell">
-      <div class="skill-category">Fabrication</div>
-      <div class="skill-items">3D Printing<br>Rapid Prototyping<br>Woodworking</div>
+
+    <div class="skill-row">
+      <div class="skill-cat"><span class="skill-cat-num">03</span>Fabrication</div>
+      <div class="skill-pills">
+        <span class="pill">3D Printing</span>
+        <span class="pill">Rapid Prototyping</span>
+        <span class="pill">Woodworking</span>
+        <span class="pill">Manufacturing</span>
+      </div>
     </div>
-    <div class="skill-cell">
-      <div class="skill-category">Programming</div>
-      <div class="skill-items">MATLAB<br>Python<br>Arduino</div>
+
+    <div class="skill-row">
+      <div class="skill-cat"><span class="skill-cat-num">04</span>Programming &amp; Data</div>
+      <div class="skill-pills">
+        <span class="pill">MATLAB</span>
+        <span class="pill">Python</span>
+        <span class="pill">Arduino</span>
+        <span class="pill">LTspice</span>
+        <span class="pill">ImageJ</span>
+      </div>
     </div>
-    <div class="skill-cell">
-      <div class="skill-category">Biomedical</div>
-      <div class="skill-items">qPCR, ELISA<br>DNA Methylation<br>NanoMosaic Tessie</div>
+
+    <div class="skill-row">
+      <div class="skill-cat"><span class="skill-cat-num">05</span>Biomedical &amp; Lab</div>
+      <div class="skill-pills">
+        <span class="pill">qPCR</span>
+        <span class="pill">ELISA</span>
+        <span class="pill">DNA Methylation</span>
+        <span class="pill">NanoMosaic Tessie</span>
+      </div>
     </div>
-    <div class="skill-cell">
-      <div class="skill-category">Engineering</div>
-      <div class="skill-items">Drawings<br>Simulations<br>Manufacturing</div>
+
+    <div class="skill-row">
+      <div class="skill-cat"><span class="skill-cat-num">06</span>Relevant Coursework</div>
+      <div class="skill-pills">
+        <span class="pill">Mechanics of Solids &amp; Structures</span>
+        <span class="pill">Statics &amp; Dynamics</span>
+        <span class="pill">Computer Aided Visualization &amp; Design</span>
+        <span class="pill">Thermodynamics</span>
+        <span class="pill">Fluid Mechanics</span>
+        <span class="pill">Control Systems Engineering</span>
+        <span class="pill">Biomechanics</span>
+        <span class="pill">Biomaterials</span>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -298,6 +350,30 @@
     <a href="https://www.linkedin.com/in/heaven-alakraa-b09866325" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </footer>
+
+<script>
+// Nav scroll-spy: highlight the tab for whichever section is on screen.
+const navLinks = document.querySelectorAll('.nav-pill a');
+const spySections = ['intro','about','projects','interactive','skills']
+  .map(id => document.getElementById(id))
+  .filter(Boolean);
+
+function setActive(id) {
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+}
+
+const spy = new IntersectionObserver((entries) => {
+  // pick the section most in view
+  let best = null;
+  entries.forEach(e => {
+    if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) best = e;
+  });
+  if (best) setActive(best.target.id);
+}, { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.25, 0.5, 1] });
+
+spySections.forEach(s => spy.observe(s));
+setActive('intro'); // default on load
+</script>
 
 </body>
 </html>
