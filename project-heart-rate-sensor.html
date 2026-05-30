@@ -3,83 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heart Rate Sensor &amp; F1 Safety Gear Testing — Heaven Alakraa</title>
+<title>Heart Rate Sensor &amp; F1 Safety Gear Study — Heaven Alakraa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* image + layout helpers kept local so there's nothing to merge into styles.css */
+  .media-figure img {
+    width: 100%; display: block; border-radius: 12px;
+    border: 1px solid var(--border); background: var(--light);
+    object-fit: contain; max-height: 520px;
+  }
+  .media-figure.center img { width: auto; max-width: 560px; margin: 0 auto; }
+  .media-figure.full img { width: 100%; max-width: 100%; max-height: none; }
+  .media-figure.tall img { max-height: 600px; width: auto; max-width: 100%; margin: 0 auto; }
+
+  .figure-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; align-items: start; }
+  .figure-row .media-figure { margin: 0; }
+  .figure-row .media-figure img { max-height: 360px; }
+
+  /* click-to-zoom */
+  .media-figure img { cursor: zoom-in; transition: transform 0.15s, box-shadow 0.15s; }
+  .media-figure img:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 300;
+    background: rgba(0,0,0,0.88); align-items: center; justify-content: center; padding: 32px; cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 95%; max-height: 92%; border-radius: 8px; cursor: default; }
+  .lightbox-close { position: fixed; top: 18px; right: 24px; color: #fff; font-size: 34px; line-height: 1; background: none; border: none; cursor: pointer; font-family: var(--sans); }
+  .lightbox-hint { position: fixed; bottom: 22px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.6); font-size: 13px; }
+
+  @media (max-width: 700px) { .figure-row { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
+<!-- NAV -->
+<nav>
+  <div class="nav-pill">
+    <a href="index.html#intro">Intro</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#interactive">Interactive</a>
+    <a href="index.html#skills">Skillset</a>
+  </div>
+</nav>
 
 <article class="project-page">
   <a class="back-link" href="index.html#projects">← Back to projects</a>
 
-  <div class="pp-year">2025</div>
-  <h1 class="pp-title">Heart Rate Sensor &amp; Formula 1 Safety Gear Testing</h1>
+  <div class="pp-year">2025 · ENGN 0030 · Introduction to Engineering</div>
+  <h1 class="pp-title">Heart Rate Sensor &amp; F1 Safety Gear Study</h1>
   <div class="pp-tags">
     <span class="project-tag">Arduino</span>
+    <span class="project-tag">Embedded C++</span>
+    <span class="project-tag">I²C Sensors</span>
     <span class="project-tag">MATLAB</span>
-    <span class="project-tag">Prototyping</span>
   </div>
-  <p class="pp-lead">A real-time heart rate monitor built to analyze biometric data under simulated Formula 1 racing conditions.</p>
+  <p class="pp-lead">A working pulse monitor built from scratch — an Arduino reading a MAX30102 pulse-oximeter over I²C, computing live BPM, and showing it on an OLED with a buzzer beat. I then used it as the springboard for a study on how Formula 1 safety gear affects a driver's heart rate.</p>
 
-  <figure class="media-figure">
-    <div class="img-placeholder">Add a photo of the sensor / breadboard build here</div>
-    <figcaption>Prototype build (replace with your image)</figcaption>
+  <!-- HERO: the build photo -->
+  <figure class="media-figure full">
+    <img src="hr/build.jpg" alt="Arduino, MAX30102 sensor, OLED, and buzzer wired on a breadboard">
+    <figcaption>The completed circuit — Arduino Uno, MAX30102 pulse-oximeter, SSD1306 OLED, and a buzzer on a breadboard.</figcaption>
   </figure>
 
+  <!-- ===== AT A GLANCE ===== -->
   <section class="pp-section">
-    <h2>Overview</h2>
-    <ul>
-      <li>Built the sensor using MAX30102 pulse oximetry and an Arduino with an OLED display.</li>
-      <li>Analyzed and visualized BPM data in MATLAB across simulated Formula 1 safety gear conditions.</li>
-      <li>Presented findings at an engineering showcase.</li>
-    </ul>
-  </section>
-
-  <section class="pp-section">
-    <h2>Process</h2>
-    <div class="step-block">
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <h3>Hardware build</h3>
-        <p>Wired the MAX30102 to an Arduino with an OLED readout for live BPM display.</p>
-      </div>
-    </div>
-    <div class="step-block">
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <h3>Data collection</h3>
-        <p>Logged heart-rate data under simulated F1 safety gear conditions to study thermal/physiological load.</p>
-      </div>
-    </div>
-    <div class="step-block">
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <h3>Analysis in MATLAB</h3>
-        <p>Processed and visualized BPM trends across test conditions.</p>
-      </div>
-    </div>
-    <div class="step-block">
-      <div class="step-num">4</div>
-      <div class="step-body">
-        <h3>Showcase</h3>
-        <p>Presented the results at an engineering showcase.</p>
-      </div>
+    <h2>At a glance</h2>
+    <p>This was a hands-on circuits and embedded-programming project: wire a multi-component sensor system, get it talking over I²C, and write firmware that turns a raw optical signal into a stable, readable heart rate. With the device working, I built an applied study around it — exploring how stripping away different pieces of F1 safety gear might affect a driver's heart rate.</p>
+    <div class="stat-row">
+      <div class="stat-cell"><div class="stat-num">4</div><div class="stat-lbl">components integrated</div></div>
+      <div class="stat-cell"><div class="stat-num">I²C</div><div class="stat-lbl">shared sensor + display bus</div></div>
+      <div class="stat-cell"><div class="stat-num">Live</div><div class="stat-lbl">real-time BPM + buzzer</div></div>
+      <div class="stat-cell"><div class="stat-num">MATLAB</div><div class="stat-lbl">data analysis</div></div>
     </div>
   </section>
 
+  <!-- ===== THE BUILD ===== -->
   <section class="pp-section">
-    <h2>Demo Video</h2>
-    <!-- Replace with your YouTube/Vimeo embed or a local .mp4 (see can-opener page for examples). -->
-    <div class="video-embed">
-      <div class="embed-placeholder">Add a demo video here (YouTube/Vimeo embed or local .mp4).</div>
-    </div>
+    <h2>The build</h2>
+    <p>The system centers on an Arduino Uno. A MAX30102 pulse-oximeter shines light into a fingertip and reads the reflected signal; the Arduino processes that signal to detect beats and compute BPM, then drives an SSD1306 OLED to display the value live. A buzzer pulses on each detected beat. The sensor and display share a single I²C bus (the A4/A5 lines), which keeps the wiring compact but means both devices must respond at different addresses on the same two wires.</p>
+
+    <h3 style="font-family:var(--serif); font-weight:400; font-size:20px; margin:32px 0 8px;">Wiring</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>Component</th><th>Pin</th><th>Arduino</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>MAX30102 sensor</td><td>VIN</td><td>5V</td></tr>
+        <tr><td>MAX30102 sensor</td><td>SDA</td><td>A4</td></tr>
+        <tr><td>MAX30102 sensor</td><td>SCL</td><td>A5</td></tr>
+        <tr><td>OLED display</td><td>VCC / GND</td><td>5V / GND</td></tr>
+        <tr><td>OLED display</td><td>SDA / SCL</td><td>A4 / A5 (shared bus)</td></tr>
+        <tr><td>Buzzer</td><td>+ (anode) via 100 Ω resistor</td><td>Pin D3</td></tr>
+        <tr><td>Buzzer</td><td>− (cathode)</td><td>GND</td></tr>
+      </tbody>
+    </table>
   </section>
 
+  <!-- ===== FIRMWARE ===== -->
   <section class="pp-section">
-    <h2>Gallery</h2>
-    <figure class="media-figure"><div class="img-placeholder">MATLAB BPM plot</div></figure>
-    <figure class="media-figure"><div class="img-placeholder">Showcase / testing photo</div></figure>
+    <h2>Firmware</h2>
+    <p>I started from provided starter code and optimized it for a stable reading — the raw sensor signal is noisy, so the real work is in beat detection and smoothing rather than just printing a number. The sketch initializes the sensor and display over I²C, samples the IR signal, detects peaks, converts the beat-to-beat interval into BPM, and refreshes the OLED.</p>
+    <div class="code-block"><span class="c-comment">// core loop: sample -> detect beat -> compute BPM -> display</span>
+long irValue = particleSensor.getIR();
+
+if (checkForBeat(irValue)) {
+  long delta = millis() - lastBeat;     <span class="c-comment">// time since last beat</span>
+  lastBeat = millis();
+  beatsPerMinute = 60 / (delta / 1000.0);
+
+  <span class="c-comment">// rolling average smooths noisy single readings</span>
+  if (beatsPerMinute &gt; 20 &amp;&amp; beatsPerMinute &lt; 255) {
+    rates[rateSpot++] = (byte)beatsPerMinute;
+    rateSpot %= RATE_SIZE;
+    beatAvg = average(rates);
+    tone(3, 1000, 50);                  <span class="c-comment">// beep on each beat (buzzer on pin D3)</span>
+  }
+}
+display.print(beatAvg); display.print(" BPM");</div>
+    <p class="code-cap">Simplified excerpt — the beat-detection and BPM logic at the heart of the sketch.</p>
+  </section>
+
+  <!-- ===== APPLIED STUDY ===== -->
+  <section class="pp-section">
+    <h2>Applied study: F1 safety gear &amp; heart rate</h2>
+    <p>With a working monitor in hand, I framed an engineering question around it: which piece of a Formula 1 driver's safety gear most affects their heart rate, and how does heart rate correlate with speed around a lap? The idea was that a driver's physical and psychological load — and therefore cardiovascular strain — depends on what protection they're wearing. I designed a four-condition protocol (full gear as control, then helmet only, racing suit only, and rib protectors only) measured at checkpoints around the Bahrain International Circuit, and analyzed the resulting BPM curves in MATLAB.</p>
+
+    <figure class="media-figure full">
+      <img src="hr/poster.png" alt="Poster: heart rate vs F1 safety gear study">
+      <figcaption>Study poster — objective, protocol, results, and analysis.</figcaption>
+    </figure>
+
+    <p>The modeled results pointed to an interesting interpretation: removing the racing suit alone produced the highest heart rate, while rib protectors alone kept it closest to the full-gear baseline. A plausible reading is psychological — rib protectors guard against several immediate impact modes (with structures, the steering wheel, the steering column), so their presence may ease a driver's stress more than the lightweight, fire-focused suit does.</p>
+
+    <p style="font-size:13px; color:var(--gray);"><em>Note on data: this study used simulated/modeled heart-rate data, not measurements from a real driver. The hardware build above is real and functional; the F1 analysis is a conceptual exploration of the kind of question the device could investigate with real subjects.</em></p>
+  </section>
+
+  <!-- ===== WHAT I TOOK AWAY ===== -->
+  <section class="pp-section">
+    <h2>What I took away</h2>
+    <p>The core win was getting real hardware to work end-to-end: debugging an I²C bus shared between two devices, taming a noisy biosignal into a stable reading, and writing firmware that does something useful in real time. It also pushed me to think past the build — to frame an actual research question the sensor could answer, which is exactly the bridge between a circuit and an experiment. A natural next step is to run the F1-gear protocol with real subjects and compare measured data against the model.</p>
   </section>
 
   <a class="back-link" href="index.html#projects" style="margin-top:48px;">← Back to projects</a>
@@ -92,6 +157,31 @@
     <a href="index.html#about">About</a>
   </div>
 </footer>
+
+<!-- LIGHTBOX (click any figure image to enlarge) -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-hint">Click anywhere or press Esc to close</div>
+</div>
+
+<script>
+  (function () {
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.media-figure img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt;
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  })();
+</script>
 
 </body>
 </html>
