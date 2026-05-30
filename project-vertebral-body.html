@@ -16,6 +16,12 @@
   }
   .media-figure.center img { width: auto; max-width: 680px; margin: 0 auto; }
 
+  /* two figures side by side */
+  .figure-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; align-items: start; }
+  .figure-row .media-figure { margin: 0; }
+  .figure-row .media-figure img { max-height: 340px; }
+  .figure-row .img-placeholder { aspect-ratio: 4 / 3; }
+
   /* screening funnel */
   .funnel { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 32px 0 8px; }
   .funnel-step {
@@ -28,7 +34,11 @@
   .funnel-lbl { font-size: 12px; color: var(--gray); letter-spacing: 0.02em; line-height: 1.4; }
   .funnel-step.final .funnel-lbl { color: rgba(255,255,255,0.78); }
   .funnel-arrow { display: flex; align-items: center; color: var(--border); font-size: 18px; }
-  @media (max-width: 700px) { .funnel-arrow { display: none; } }
+
+  @media (max-width: 700px) {
+    .funnel-arrow { display: none; }
+    .figure-row { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -51,22 +61,38 @@
   <div class="pp-tags">
     <span class="project-tag">Ansys Granta EduPack</span>
     <span class="project-tag">Material Selection</span>
-    <span class="project-tag">Biomechanics</span>
+    <span class="project-tag">SolidWorks FEA</span>
     <span class="project-tag">Implant Design</span>
   </div>
-  <p class="pp-lead">A sole-authored case report that searches the entire engineering-materials universe — 4,395 materials — for a next-generation polymer to replace titanium in spinal implants, reducing stress shielding by mechanically matching bone. The recommendation: polyetherimide (PEI).</p>
+  <p class="pp-lead">A case study that searches the entire engineering-materials universe — 4,395 materials — for a next-generation polymer to replace titanium in spinal implants, reducing stress shielding by mechanically matching bone. The recommendation: polyetherimide (PEI) — which I then modeled and stress-tested in SolidWorks.</p>
+
+  <!-- ===== POSTER (moved to top) ===== -->
+  <section class="pp-section" style="margin-top:32px;">
+    <!--
+      Save your poster as an image for inline display (vbr/poster.png), OR keep it as a PDF
+      and rely on the button below. For the image: delete the placeholder and uncomment the <img>.
+    -->
+    <figure class="media-figure center" style="margin-top:0;">
+      <div class="img-placeholder">Add your poster image here — save as vbr/poster.png</div>
+      <!-- <img src="vbr/poster.png" alt="Vertebral body replacement material-selection poster"> -->
+      <figcaption>Conference-style poster summarizing the background, screening pipeline, and recommendation.</figcaption>
+    </figure>
+    <div style="text-align:center;">
+      <a class="btn btn-outline" href="vbr/Heaven Alakraa - Biomaterials Presentation.pdf" target="_blank" rel="noopener">View full poster (PDF) ↗</a>
+    </div>
+  </section>
 
   <!-- ===== AT A GLANCE ===== -->
   <section class="pp-section">
     <h2>At a glance</h2>
-    <p>Titanium is a current standard for vertebral body replacements, but it is far stiffer than bone — so it carries load the surrounding vertebrae should carry, causing them to weaken over time (stress shielding). PEEK matches bone better but integrates poorly with it. Using Ansys Granta EduPack, I built a multi-stage screening pipeline to find a material that balances bone-like stiffness, strength, toughness, durability, and biocompatibility.</p>
+    <p>Titanium is a current standard for vertebral body replacements, but it is far stiffer than bone — so it carries load the surrounding vertebrae should carry, causing them to weaken over time (stress shielding). PEEK matches bone better but integrates poorly with it. Using Ansys Granta EduPack, I built a multi-stage screening pipeline to find a material that balances bone-like stiffness, strength, toughness, durability, and biocompatibility — then validated the winner with a finite-element study in SolidWorks.</p>
     <div class="stat-row">
       <div class="stat-cell"><div class="stat-num">4,395</div><div class="stat-lbl">materials screened</div></div>
       <div class="stat-cell"><div class="stat-num">8</div><div class="stat-lbl">finalists after all stages</div></div>
       <div class="stat-cell"><div class="stat-num">PEI</div><div class="stat-lbl">recommended material</div></div>
       <div class="stat-cell"><div class="stat-num">FDA✓</div><div class="stat-lbl">approved for bone fixation*</div></div>
     </div>
-    <p style="font-size:13px; color:var(--gray);">*PEI is already FDA-approved for external bone-fixation systems (e.g. the WristJack and Synthes ADRF fixators), a strong signal of its osteocompatibility. Sole-authored report for ENGN 1490 Biomaterials.</p>
+    <p style="font-size:13px; color:var(--gray);">*PEI is already FDA-approved for external bone-fixation systems (e.g. the WristJack and Synthes ADRF fixators), a strong signal of its osteocompatibility.</p>
   </section>
 
   <!-- ===== THE PROBLEM ===== -->
@@ -109,20 +135,22 @@
     </table>
 
     <!--
-      Optional: add your two Ansys Granta selection charts here.
-      Save them in a "vbr" folder (e.g. vbr/granta-initial.png and vbr/granta-final.png),
+      Add your two Ansys Granta selection charts here (side by side).
+      Save them in a "vbr" folder as vbr/granta-initial.png and vbr/granta-final.png,
       then delete each placeholder div and uncomment the matching <img>.
     -->
-    <figure class="media-figure center" style="margin-top:36px;">
-      <div class="img-placeholder">Optional: Granta Figure 1 — modulus vs. compressive strength after initial screening (save as vbr/granta-initial.png)</div>
-      <!-- <img src="vbr/granta-initial.png" alt="Granta plot: Young's modulus vs compressive strength after initial selection"> -->
-      <figcaption>Initial screening — Young's modulus vs. compressive strength, with material-class envelopes.</figcaption>
-    </figure>
-    <figure class="media-figure center">
-      <div class="img-placeholder">Optional: Granta Figure 2 — the 8 finalists after refinement (save as vbr/granta-final.png)</div>
-      <!-- <img src="vbr/granta-final.png" alt="Granta plot: the eight finalist materials after refinement"> -->
-      <figcaption>After refinement — the eight finalists (composites and high-performance plastics).</figcaption>
-    </figure>
+    <div class="figure-row">
+      <figure class="media-figure">
+        <div class="img-placeholder">Granta Figure 1 — initial screening (save as vbr/granta-initial.png)</div>
+        <!-- <img src="vbr/granta-initial.png" alt="Granta plot: Young's modulus vs compressive strength after initial selection"> -->
+        <figcaption>Initial screening — modulus vs. compressive strength, with class envelopes.</figcaption>
+      </figure>
+      <figure class="media-figure">
+        <div class="img-placeholder">Granta Figure 2 — final 8 finalists (save as vbr/granta-final.png)</div>
+        <!-- <img src="vbr/granta-final.png" alt="Granta plot: the eight finalist materials after refinement"> -->
+        <figcaption>After refinement — the eight finalists (composites and high-performance plastics).</figcaption>
+      </figure>
+    </div>
   </section>
 
   <!-- ===== RESULT ===== -->
@@ -141,25 +169,57 @@
     </div>
   </section>
 
-  <!-- ===== POSTER ===== -->
+  <!-- =========================================================
+       FEA VALIDATION  —  built out and ready.
+       TOMORROW: run the SolidWorks study (see VBR-FEA-guide), then
+        (1) drop 3 images into the vbr/ folder with the names below
+        (2) replace the 3 numbers marked  <<EDIT>>  in the results table
+        (3) delete each .img-placeholder div and uncomment the <img> above it
+       ========================================================= -->
   <section class="pp-section">
-    <h2>Findings poster</h2>
-    <p>I summarized the background, screening pipeline, and final recommendation in a conference-style poster.</p>
-    <!--
-      Save your poster as an image for inline display (vbr/poster.png), OR keep it as a PDF
-      and rely on the button below. For the image: delete the placeholder and uncomment the <img>.
-    -->
+    <h2>FEA validation in SolidWorks</h2>
+    <p>To test the recommendation as an actual device, I modeled a simplified vertebral-body cage (a Ø 14 mm hollow cylinder) sandwiched between two cortical-bone segments, then ran an identical static compression study (1,000 N physiological lumbar load, bottom face fixed) twice — once with a titanium implant and once with PEI — changing nothing but the implant material. The question: how much load reaches the surrounding bone in each case?</p>
+
+    <!-- The CAD model -->
     <figure class="media-figure center">
-      <div class="img-placeholder">Optional: add your poster image here — save as vbr/poster.png</div>
-      <!-- <img src="vbr/poster.png" alt="Vertebral body replacement material-selection poster"> -->
+      <div class="img-placeholder">Add your SolidWorks model render here — save as vbr/fea-model.png</div>
+      <!-- <img src="vbr/fea-model.png" alt="SolidWorks model of the bone-implant-bone assembly"> -->
+      <figcaption>The bone–implant–bone assembly: load applied on top, base fixed.</figcaption>
     </figure>
-    <a class="btn btn-outline" href="vbr/Heaven Alakraa - Biomaterials Presentation.pdf" target="_blank" rel="noopener">View full poster (PDF) ↗</a>
+
+    <!-- The two stress plots, side by side -->
+    <div class="figure-row">
+      <figure class="media-figure">
+        <div class="img-placeholder">Titanium von Mises plot (save as vbr/fea-titanium.png)</div>
+        <!-- <img src="vbr/fea-titanium.png" alt="von Mises stress with titanium implant"> -->
+        <figcaption>Titanium implant — stiff implant carries the load; bone is lightly stressed (shielding).</figcaption>
+      </figure>
+      <figure class="media-figure">
+        <div class="img-placeholder">PEI von Mises plot (save as vbr/fea-pei.png)</div>
+        <!-- <img src="vbr/fea-pei.png" alt="von Mises stress with PEI implant"> -->
+        <figcaption>PEI implant — compliant implant shares load; bone is stressed more naturally.</figcaption>
+      </figure>
+    </div>
+
+    <h3 style="font-family:var(--serif); font-weight:400; font-size:20px; margin:32px 0 8px;">Results</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>Metric</th><th>Titanium implant</th><th>PEI implant</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Peak von Mises stress in bone</td><td>__ MPa &nbsp;<!--<<EDIT>>--></td><td>__ MPa &nbsp;<!--<<EDIT>>--></td></tr>
+        <tr><td>Avg. bone stress near interface</td><td>__ MPa &nbsp;<!--<<EDIT>>--></td><td>__ MPa &nbsp;<!--<<EDIT>>--></td></tr>
+        <tr><td>Peak stress in implant</td><td>__ MPa</td><td>__ MPa (&lt; 105 MPa yield ✓)</td></tr>
+      </tbody>
+    </table>
+    <p>As expected, the titanium implant absorbs most of the compressive load, leaving the surrounding bone understressed — the mechanical signature of stress shielding. The PEI implant, with stiffness much closer to bone, transfers more load into the bone, which should help preserve bone density over time. The peak stress in the PEI implant itself stays comfortably below its yield strength, confirming it survives physiological loading.</p>
+    <p style="font-size:13px; color:var(--gray);"><em>A simplified comparative study to illustrate the stress-shielding mechanism, not a validated clinical model. Simplifications: idealized cylindrical geometry, bonded contact, homogeneous isotropic bone, and a single static load.</em></p>
   </section>
 
   <!-- ===== NEXT STEPS ===== -->
   <section class="pp-section">
     <h2>Where this goes next</h2>
-    <p>This study established <em>what</em> material to use; the natural next step is to test <em>how it behaves as a device</em>. I'm planning to model a PEI vertebral-body implant in SolidWorks and run a finite-element simulation under physiological compressive load, comparing its stress distribution against a titanium equivalent to quantify the reduction in stress shielding. Beyond that, PEI's long-term in-vivo wear, degradation, and osseointegration — potentially aided by bioactive coatings or fiber reinforcement — remain open questions for future work.</p>
+    <p>Future work would move toward realism: patient-specific cage geometry with porosity, frictional contact at the bone interface, anisotropic bone properties, and cyclic fatigue loading. On the materials side, PEI's long-term in-vivo wear, degradation, and osseointegration — potentially aided by bioactive coatings or fiber reinforcement — remain open questions worth investigating.</p>
   </section>
 
   <a class="back-link" href="index.html#projects" style="margin-top:48px;">← Back to projects</a>
