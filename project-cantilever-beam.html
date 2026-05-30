@@ -7,6 +7,29 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* ---- Image + chart layout (kept here so there's nothing to merge into styles.css) ---- */
+  .media-figure img {
+    width: 100%; display: block; border-radius: 12px;
+    border: 1px solid var(--border); background: var(--light);
+    object-fit: cover; max-height: 460px;
+  }
+  /* tall portrait photos: cap height, center, never stretch full width */
+  .media-figure.portrait img { width: auto; max-width: 100%; max-height: 480px; margin: 0 auto; object-fit: contain; }
+  /* a centered, medium figure (good for the schematic) */
+  .media-figure.center img { width: auto; max-width: 560px; margin: 0 auto; object-fit: contain; max-height: 420px; }
+
+  /* calibration: photo and table side-by-side, equal height */
+  .calib-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 28px; align-items: stretch; margin: 32px 0; }
+  .calib-grid .media-figure { margin: 0; display: flex; flex-direction: column; }
+  .calib-grid .media-figure img { height: 100%; width: 100%; object-fit: cover; max-height: none; }
+  .calib-grid .data-table { margin: 0; align-self: center; }
+
+  @media (max-width: 700px) {
+    .calib-grid { grid-template-columns: 1fr; gap: 18px; }
+    .calib-grid .media-figure img { max-height: 420px; }
+  }
+</style>
 </head>
 <body>
 <!-- NAV -->
@@ -48,23 +71,17 @@
       <div class="stat-cell"><div class="stat-num">3.7–22</div><div class="stat-lbl">safety factor range</div></div>
       <div class="stat-cell"><div class="stat-num">1–6 kg</div><div class="stat-lbl">calibrated load range</div></div>
     </div>
-    <p style="font-size:14px;"><em>Team project with Mekhi Mitchell and Van Teager. My focus: the analytical derivation, MATLAB optimization and regression, and calibration testing.</em></p>
+    <p style="font-size:14px;"><em>A three-person project. I led the analytical derivation, MATLAB modeling and regression, and calibration testing; my teammates Mekhi Mitchell and Van Teager contributed to fabrication and data collection.</em></p>
   </section>
 
   <!-- ===== DESIGN ===== -->
   <section class="pp-section">
     <h2>The design</h2>
     <p>The scale is a cantilever: a 0.96 m acrylic bar (38.1 × 9.525 mm cross-section) fixed at one end to a wooden upright bolted to a plywood base. A second wood block sandwiches and screws the acrylic to the upright so the fixed end stays rigid. Loads hang from a small platform glued at L/6 — 0.16 m from the support — chosen to keep the beam well within its elastic limit while still giving a readable deflection.</p>
-    <div class="figure-row">
-      <figure class="media-figure">
-        <img src="beam/Final Beam Design Sketch.png" alt="Labeled schematic of the final scale design">
-        <figcaption>Final design schematic — beam, supports, and the load point at L/6.</figcaption>
-      </figure>
-      <figure class="media-figure portrait">
-        <img src="beam/Beam Fixed Attachment.png" alt="Close-up of the fixed support clamping the acrylic beam">
-        <figcaption>The fixed end — a screwed block enforces zero slope and deflection at the support.</figcaption>
-      </figure>
-    </div>
+    <figure class="media-figure center">
+      <img src="beam/Final Beam Design Sketch.png" alt="Labeled schematic of the final scale design">
+      <figcaption>Final design schematic — acrylic beam, plywood supports, and the loading point at L/6.</figcaption>
+    </figure>
   </section>
 
   <!-- ===== THE MATH ===== -->
@@ -115,7 +132,7 @@
     <h2>Calibration</h2>
     <p>To read deflection, I placed a reference bar perpendicular to the base and measured where the acrylic beam rested under each load. The deflection bands for 1–6 kg were marked straight onto the upright.</p>
     <div class="calib-grid">
-      <figure class="media-figure portrait">
+      <figure class="media-figure">
         <img src="beam/Calibrated Beam Deflection.png" alt="Acrylic beam resting against the calibrated reference bar marked 1-6 kg">
         <figcaption>Deflection bands marked 1–6 kg.</figcaption>
       </figure>
@@ -140,10 +157,17 @@
   <section class="pp-section">
     <h2>Results</h2>
     <p>Linear regression on the calibration data gave an experimental spring constant of <strong>k = 395.88 N/m</strong> — within 5% of the theoretical 376.79 N/m. Using the calibrated scale, the team predicted two unknown masses at 3.7 kg and 5.5 kg, within 9% and 6% of their true values — both inside the 10% target. The small remaining error traces mostly to neglecting the beam's self-weight and slight forward bending of the wooden support under load.</p>
-    <figure class="media-figure center">
-      <img src="beam/Beam Theoretical vs Experimental Deflection.png" alt="Plot of theoretical vs experimental deflection against weight">
-      <figcaption>Theoretical vs. experimental deflection, with lines of best fit — both essentially linear.</figcaption>
-    </figure>
+
+    <div style="margin: 36px 0 8px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 14px; font-size: 13px; color: var(--gray);">
+        <span style="display:flex; align-items:center; gap:6px;"><span style="width:11px; height:11px; border-radius:50%; background:#111;"></span>Theoretical</span>
+        <span style="display:flex; align-items:center; gap:6px;"><span style="width:11px; height:11px; border-radius:50%; background:#c89b5a;"></span>Measured</span>
+      </div>
+      <div style="position: relative; width: 100%; height: 360px;">
+        <canvas id="beamChart" role="img" aria-label="Deflection versus weight: theoretical and measured points both rise linearly from 0 to about 15 cm at 6 kg.">Theoretical and measured deflection both rise linearly with weight and match closely.</canvas>
+      </div>
+      <p style="font-size:13px; color:var(--gray); text-align:center; margin-top:12px;">Theoretical vs. measured deflection across 1–6 kg — both essentially linear, with spring constants agreeing to within 5%.</p>
+    </div>
   </section>
 
   <!-- ===== MATLAB ===== -->
@@ -183,5 +207,37 @@ k_experimental = 1 / ((b2/100)/9.81);  <span class="c-comment">% ≈ 395.88 N/m<
     <a href="index.html#about">About</a>
   </div>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+  new Chart(document.getElementById('beamChart'), {
+    type: 'scatter',
+    data: {
+      datasets: [
+        {
+          label: 'Theoretical',
+          data: [{x:0,y:0},{x:1,y:2.6},{x:2,y:5.21},{x:3,y:7.81},{x:4,y:10.41},{x:5,y:13.02},{x:6,y:15.62}],
+          borderColor: '#111', backgroundColor: '#111',
+          showLine: true, pointRadius: 4, pointStyle: 'circle', borderWidth: 2, tension: 0
+        },
+        {
+          label: 'Measured',
+          data: [{x:0,y:0},{x:1,y:2.5},{x:2,y:4.75},{x:3,y:7.5},{x:4,y:9.75},{x:5,y:12.4},{x:6,y:15}],
+          borderColor: '#c89b5a', backgroundColor: '#c89b5a',
+          showLine: true, pointRadius: 4, pointStyle: 'rectRot', borderWidth: 2, borderDash: [6,4], tension: 0
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { title: { display: true, text: 'Weight (kg)' }, min: 0, max: 6, grid: { color: 'rgba(0,0,0,0.06)' } },
+        y: { title: { display: true, text: 'Deflection (cm)' }, min: 0, max: 16, grid: { color: 'rgba(0,0,0,0.06)' } }
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
