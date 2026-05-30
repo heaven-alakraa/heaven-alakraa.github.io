@@ -16,15 +16,20 @@
   }
   .media-figure.center img { width: auto; max-width: 560px; margin: 0 auto; }
   .media-figure.full img { width: 100%; max-width: 100%; max-height: none; }
+  /* standalone video, centered, capped width */
+  .media-figure.vid video { display: block; width: 100%; max-width: 640px; margin: 0 auto; border-radius: 12px; border: 1px solid var(--border); background: #000; }
   .media-figure.tall img { max-height: 600px; width: auto; max-width: 100%; margin: 0 auto; }
 
   /* two figures side by side: equal image boxes so captions line up; no cropping */
   .figure-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; align-items: start; }
   .figure-row .media-figure { margin: 0; }
-  .figure-row .media-figure img {
+  .figure-row .media-figure img,
+  .figure-row .media-figure video {
     height: 440px; width: 100%; max-height: 440px;
     object-fit: contain; background: var(--light); padding: 10px;
+    border-radius: 12px; border: 1px solid var(--border); display: block;
   }
+  .figure-row .media-figure video { object-fit: cover; cursor: default; }
   .figure-row .media-figure figcaption { min-height: 40px; }
 
   /* click-to-zoom */
@@ -137,6 +142,16 @@ display.print(beatAvg); display.print(" BPM");</div>
     <p class="code-cap">Simplified excerpt — the beat-detection and BPM logic at the heart of the sketch.</p>
   </section>
 
+  <!-- ===== CUSTOM ENCLOSURE ===== -->
+  <section class="pp-section">
+    <h2>Custom sheet-metal enclosure</h2>
+    <p>To turn the loose breadboard into a sturdy, presentable device for the study, I fabricated a custom metal housing in the Brown Design Workshop — cutting and folding a sheet of metal into a box body and mounting the Arduino and circuit inside. This made the sensor self-contained and robust enough to handle during the showcase.</p>
+    <figure class="media-figure vid">
+      <video src="hr/housing.mp4" controls muted playsinline preload="metadata"></video>
+      <figcaption>The working sensor running inside its custom folded-metal enclosure.</figcaption>
+    </figure>
+  </section>
+
   <!-- ===== APPLIED STUDY ===== -->
   <section class="pp-section">
     <h2>Applied study: F1 safety gear &amp; heart rate</h2>
@@ -145,6 +160,11 @@ display.print(beatAvg); display.print(" BPM");</div>
     <figure class="media-figure full">
       <img src="hr/poster.png" alt="Poster: heart rate vs F1 safety gear study">
       <figcaption>Study poster — objective, protocol, results, and analysis.</figcaption>
+    </figure>
+
+    <figure class="media-figure center">
+      <img src="hr/showcase.jpg" alt="Presenting the study poster at the engineering showcase">
+      <figcaption>Presenting at the ENGN 0030 final engineering showcase.</figcaption>
     </figure>
 
     <p>The modeled results pointed to an interesting interpretation: removing the racing suit alone produced the highest heart rate, while rib protectors alone kept it closest to the full-gear baseline. A plausible reading is psychological — rib protectors guard against several immediate impact modes (with structures, the steering wheel, the steering column), so their presence may ease a driver's stress more than the lightweight, fire-focused suit does.</p>
