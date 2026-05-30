@@ -390,6 +390,45 @@ footer a:hover { color: var(--black); }
   color: var(--gray); font-size: 13px; text-align: center; padding: 16px;
 }
 
+/* code block (e.g. MATLAB) */
+.code-block {
+  background: #1c1c1a;
+  color: #e8e8e3;
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin: 24px 0;
+  overflow-x: auto;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.code-block .c-comment { color: #8a9a6b; }
+.code-cap { font-size: 13px; color: var(--gray); margin-top: 10px; }
+
+/* two-up stat row */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 28px 0;
+}
+.stat-cell { background: var(--white); padding: 20px 22px; }
+.stat-num { font-family: var(--serif); font-size: 26px; line-height: 1.1; margin-bottom: 4px; }
+.stat-lbl { font-size: 12px; color: var(--gray); letter-spacing: 0.04em; }
+
+/* data table */
+.data-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+.data-table th, .data-table td {
+  text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--border);
+}
+.data-table th { font-weight: 500; color: var(--gray); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+.data-table td { color: var(--black); }
+.data-table tr:last-child td { border-bottom: none; }
+
 /* embedded resume PDF */
 .pdf-frame {
   margin-top: 32px;
