@@ -10,69 +10,201 @@
 </head>
 <body>
 
+<!-- NAV -->
+<nav>
+  <div class="nav-pill">
+    <a href="index.html#intro">Intro</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#interactive">Interactive</a>
+    <a href="index.html#skills">Skillset</a>
+  </div>
+</nav>
+
 <article class="project-page">
   <a class="back-link" href="index.html#projects">← Back to projects</a>
 
-  <div class="pp-year">2024</div>
-  <h1 class="pp-title">Cantilever Beam Deflection Scale</h1>
+  <div class="pp-year">2025 · ENGN 0310 · Mechanics of Solids &amp; Structures</div>
+  <h1 class="pp-title">A Deflection-Based Scale to Measure Weight</h1>
   <div class="pp-tags">
+    <span class="project-tag">Euler–Bernoulli Theory</span>
     <span class="project-tag">MATLAB</span>
     <span class="project-tag">Fabrication</span>
-    <span class="project-tag">BDW</span>
+    <span class="project-tag">Brown Design Workshop</span>
   </div>
-  <p class="pp-lead">A cantilever beam–based mechanical scale that translates Euler–Bernoulli beam theory and Hooke's Law into a working physical prototype.</p>
+  <p class="pp-lead">A working mechanical scale that reads an object's weight from how far a cantilever beam bends — designed, built, and calibrated from first principles using Euler–Bernoulli beam theory and Hooke's law.</p>
 
+  <!--
+    HERO IMAGE — save the wide photo of you seated next to the full apparatus
+    (beam on the stand) as:  beam/hero.jpg
+  -->
   <figure class="media-figure">
-    <div class="img-placeholder">Add a photo of the finished scale here</div>
-    <figcaption>Fabricated cantilever scale (replace with your image)</figcaption>
+    <img src="beam/hero.jpg" alt="The completed cantilever beam scale on the lab bench">
+    <figcaption>The completed scale — an acrylic beam fixed to a wooden stand, loaded near the support.</figcaption>
   </figure>
 
+  <!-- ===== AT A GLANCE ===== -->
   <section class="pp-section">
-    <h2>Overview</h2>
-    <p>I designed and fabricated a mechanical scale, applying analytical deflection expressions to predict mass from beam displacement, then validated the design experimentally.</p>
-    <ul>
-      <li>Fabricated using a band saw, drill press, and other tools in the Brown Design Workshop.</li>
-      <li>Optimized beam dimensions and load placement in MATLAB — computing spring constant, bending stress, and safety factor.</li>
-      <li>Experimentally validated through incremental calibration, predicting unknown masses with less than 10% error.</li>
-    </ul>
+    <h2>At a glance</h2>
+    <p>The goal: predict an unknown mass from beam deflection alone. Because a cantilever bends linearly with load, deflection maps directly to weight through the beam's spring constant. I derived the governing equations, sized the beam in MATLAB for a safe stress margin, fabricated it in the Brown Design Workshop, and calibrated it against known masses.</p>
+    <div class="stat-row">
+      <div class="stat-cell"><div class="stat-num">&lt;10%</div><div class="stat-lbl">error on unknown masses</div></div>
+      <div class="stat-cell"><div class="stat-num">5%</div><div class="stat-lbl">measured vs. theoretical k</div></div>
+      <div class="stat-cell"><div class="stat-num">3.7–22</div><div class="stat-lbl">safety factor range</div></div>
+      <div class="stat-cell"><div class="stat-num">1–6 kg</div><div class="stat-lbl">calibrated load range</div></div>
+    </div>
+    <p style="font-size:14px;"><em>Team project with Mekhi Mitchell and Van Teager. My focus: the analytical derivation, MATLAB optimization and regression, and calibration testing.</em></p>
   </section>
 
+  <!-- ===== DESIGN ===== -->
   <section class="pp-section">
-    <h2>Design Process</h2>
+    <h2>The design</h2>
+    <p>The scale is a cantilever: a 0.96 m acrylic bar (38.1 × 9.525 mm cross-section) fixed at one end to a wooden upright bolted to a plywood base. A second wood block sandwiches and screws the acrylic to the upright so the fixed end stays rigid. Loads hang from a small platform glued at L/6 — 0.16 m from the support — chosen to keep the beam well within its elastic limit while still giving a readable deflection.</p>
+    <!--
+      Save the hand-drawn labeled schematic ("Final Design Image") as:
+      beam/final-design-sketch.png
+    -->
+    <figure class="media-figure">
+      <img src="beam/final-design-sketch.png" alt="Labeled schematic of the final scale design">
+      <figcaption>Final design schematic — acrylic beam, plywood supports, and the loading point at L/6.</figcaption>
+    </figure>
+    <!--
+      Save the close-up of the screwed fixed support (block + two screws on the upright) as:
+      beam/fixed-support.jpg
+    -->
+    <figure class="media-figure">
+      <img src="beam/fixed-support.jpg" alt="Close-up of the fixed support clamping the acrylic beam">
+      <figcaption>The fixed end — a screwed wood block clamps the acrylic to the upright to enforce zero slope and zero deflection at the support.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== THE MATH ===== -->
+  <section class="pp-section">
+    <h2>The analysis</h2>
+    <p>Modeling the bar with Euler–Bernoulli beam theory and a point load at L/6 (neglecting beam self-weight), I solved the deflection equation piecewise across the load to get closed-form expressions for the tip deflection and the spring constant:</p>
+    <p style="font-family: var(--serif); font-size: 20px; color: var(--black); margin: 8px 0 20px;">
+      δ = 2PL³ / 81EI &nbsp;&nbsp;·&nbsp;&nbsp; k = P/δ = 81EI / 2L³
+    </p>
+    <p>With E = 3 GPa for acrylic and a rectangular second moment of area I = 2.74 × 10⁻⁹ m⁴, the predicted spring constant came out to <strong>k = 376.79 N/m</strong>. Checking stresses against the 60 MPa yield strength gave safety factors from 22 at 1 kg down to 3.7 at the 6 kg maximum — comfortably safe across the whole range.</p>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="pp-section">
+    <h2>Process</h2>
     <div class="step-block">
       <div class="step-num">1</div>
       <div class="step-body">
-        <h3>Analytical model</h3>
-        <p>Derived tip deflection from Euler–Bernoulli beam theory and related it to applied mass via the beam's spring constant.</p>
+        <h3>Derive the model</h3>
+        <p>Set up the cantilever with a load at L/6, applied the boundary conditions (zero deflection and slope at the wall, matched slope across the load), and integrated to closed-form deflection and spring-constant expressions.</p>
       </div>
     </div>
     <div class="step-block">
       <div class="step-num">2</div>
       <div class="step-body">
-        <h3>MATLAB optimization</h3>
-        <p>Swept beam length, thickness, and material to balance sensitivity against bending stress and a target safety factor.</p>
+        <h3>Size it in MATLAB</h3>
+        <p>Swept beam dimensions to compute I, k, bending stress, deflection, and safety factor — choosing a geometry that maximizes readable deflection while keeping the safety factor well above 1 across 1–6 kg.</p>
       </div>
     </div>
     <div class="step-block">
       <div class="step-num">3</div>
       <div class="step-body">
-        <h3>Fabrication</h3>
-        <p>Cut and drilled the beam and mount in the Brown Design Workshop, then assembled the deflection indicator.</p>
+        <h3>Fabricate</h3>
+        <p>Cut and assembled the acrylic beam, wooden upright, and plywood base in the Brown Design Workshop, screwing the support block to fix the beam end.</p>
       </div>
     </div>
     <div class="step-block">
       <div class="step-num">4</div>
       <div class="step-body">
-        <h3>Calibration &amp; validation</h3>
-        <p>Calibrated with known masses and tested against unknowns, achieving under 10% prediction error.</p>
+        <h3>Calibrate</h3>
+        <p>Loaded known masses from 1–6 kg and measured tip deflection against a reference bar, marking the deflection bands directly on the stand.</p>
+      </div>
+    </div>
+    <div class="step-block">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h3>Regress &amp; validate</h3>
+        <p>Fit lines through both datasets in MATLAB to extract the experimental spring constant, then predicted two unknown masses to test the finished scale.</p>
       </div>
     </div>
   </section>
 
+  <!-- ===== CALIBRATION ===== -->
   <section class="pp-section">
-    <h2>Gallery</h2>
-    <figure class="media-figure"><div class="img-placeholder">MATLAB plot (deflection vs. mass)</div></figure>
-    <figure class="media-figure"><div class="img-placeholder">Fabrication / calibration photo</div></figure>
+    <h2>Calibration</h2>
+    <p>To read deflection, I placed a reference bar perpendicular to the base and measured where the acrylic beam rested under each load. The deflection bands for 1–6 kg were marked straight onto the upright.</p>
+    <!--
+      Save the close-up of the acrylic bar resting against the kg-marked reference bar as:
+      beam/calibration-closeup.jpg
+    -->
+    <figure class="media-figure">
+      <img src="beam/calibration-closeup.jpg" alt="Acrylic beam resting against the calibrated reference bar marked 1-6 kg">
+      <figcaption>Calibrated deflection bands (1–6 kg) marked on the reference upright.</figcaption>
+    </figure>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Weight (kg)</th><th>Measured Δ (cm)</th><th>Theoretical Δ (cm)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>2.50</td><td>2.60</td></tr>
+        <tr><td>2</td><td>4.75</td><td>5.21</td></tr>
+        <tr><td>3</td><td>7.50</td><td>7.81</td></tr>
+        <tr><td>4</td><td>9.75</td><td>10.41</td></tr>
+        <tr><td>5</td><td>12.40</td><td>13.02</td></tr>
+        <tr><td>6</td><td>15.00</td><td>15.62</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== RESULTS ===== -->
+  <section class="pp-section">
+    <h2>Results</h2>
+    <p>Linear regression on the calibration data gave an experimental spring constant of <strong>k = 395.88 N/m</strong> — within 5% of the theoretical 376.79 N/m. Measured and predicted deflection tracked closely across the whole range.</p>
+    <!--
+      Save the MATLAB plot (theoretical vs experimental deflection) as:
+      beam/deflection-plot.png
+    -->
+    <figure class="media-figure">
+      <img src="beam/deflection-plot.png" alt="Plot of theoretical vs experimental deflection against weight">
+      <figcaption>Theoretical vs. experimental deflection, with lines of best fit — both essentially linear.</figcaption>
+    </figure>
+    <p>Using the calibrated scale, the team predicted two unknown masses at 3.7 kg and 5.5 kg — within 9% and 6% of their true values. Both fell inside the 10% target, so the design was deemed accurate. The small remaining error traces mostly to neglecting the beam's self-weight and slight forward bending of the wooden support under load.</p>
+  </section>
+
+  <!-- ===== MATLAB ===== -->
+  <section class="pp-section">
+    <h2>MATLAB (core of the model)</h2>
+    <p>The script computes the second moment of area, spring constant, bending stress, safety factor, and deflection, then runs the regression for the experimental k.</p>
+    <div class="code-block"><span class="c-comment">% beam + acrylic bar dimensions</span>
+width    = 0.0381;     <span class="c-comment">% m (1.5 in)</span>
+thickness= 0.009525;   <span class="c-comment">% m (0.375 in)</span>
+length   = 0.96;       <span class="c-comment">% m</span>
+I = (width*thickness^3)/12;        <span class="c-comment">% second moment of area</span>
+
+E = 3e9;   <span class="c-comment">% Pa, acrylic</span>
+g = 9.81;
+
+<span class="c-comment">% spring constant for load at L/6</span>
+k = (81*E*I) / (2*length^3);       <span class="c-comment">% ≈ 376.79 N/m</span>
+
+<span class="c-comment">% stress + safety factor at the extremes</span>
+c = thickness/2;
+sigma_y = 60e6;        <span class="c-comment">% Pa, yield</span>
+<span class="c-comment">% ... bending moment M = P*L/6, sigma = M*c/I, S = sigma_y/sigma</span>
+
+<span class="c-comment">% experimental spring constant via linear regression</span>
+x  = [0;1;2;3;4;5;6];
+y2 = [0;2.5;4.75;7.5;9.75;12.40;15];   <span class="c-comment">% measured Δ (cm)</span>
+b2 = x\y2;
+k_experimental = 1 / ((b2/100)/9.81);  <span class="c-comment">% ≈ 395.88 N/m</span></div>
+    <p class="code-cap">Full script (stress, deflection, and plotting) is in the project report.</p>
+  </section>
+
+  <!-- ===== TAKEAWAYS ===== -->
+  <section class="pp-section">
+    <h2>What I took away</h2>
+    <p>This was theory made tangible: a hand-derived deflection equation that actually predicted real masses to within a few percent. It also taught me where idealized models break — self-weight and an imperfectly rigid support both nudged the results — and why calibration matters as much as derivation.</p>
   </section>
 
   <a class="back-link" href="index.html#projects" style="margin-top:48px;">← Back to projects</a>
