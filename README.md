@@ -557,7 +557,7 @@
       <div class="exp-item">
         <div class="exp-top">
           <div>
-            <div class="exp-org">RIH Bioengineering Lab</div>
+            <div class="exp-org">Bioengineering Lab, Orthopedics at RIH</div>
             <div class="exp-role">Engineering Research Intern</div>
           </div>
           <div class="exp-date">May 2026–</div>
@@ -577,7 +577,7 @@
       <div class="exp-item">
         <div class="exp-top">
           <div>
-            <div class="exp-org">Tripathi Lab, Brown</div>
+            <div class="exp-org">Tripathi Lab, Brown University</div>
             <div class="exp-role">Research Assistant</div>
           </div>
           <div class="exp-date">Jan–Sep 2025</div>
@@ -587,10 +587,10 @@
       <div class="exp-item">
         <div class="exp-top">
           <div>
-            <div class="exp-org">Brown Engineering</div>
+            <div class="exp-org">Brown School of Engineering | National Education Opportunity Network</div>
             <div class="exp-role">Teaching Fellow</div>
           </div>
-          <div class="exp-date">Aug–Jan 2026</div>
+          <div class="exp-date">Aug 2026-</div>
         </div>
       </div>
 
@@ -791,7 +791,7 @@
     <h2 class="section-title">Let's talk.</h2>
     <p style="color: var(--gray); margin-top: 16px; font-size: 15px; line-height: 1.8;">Whether it's a research collaboration, internship opportunity, or just a conversation about engineering — I'd love to hear from you.</p>
     <div class="contact-links">
-      <a href="mailto:heaven_alakraa@brown.edu" class="btn btn-dark">Email me ↗</a>
+      <a href="mailto:heaven_alakraa@brown.edu" class="btn btn-outline">Email me ↗</a>
       <a href="https://www.linkedin.com/in/heaven-alakraa-b09866325" class="btn btn-outline" target="_blank">LinkedIn ↗</a>
     </div>
   </div>
