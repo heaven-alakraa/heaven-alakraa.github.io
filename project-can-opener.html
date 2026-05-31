@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Can Opener — Mechanical Design &amp; Documentation — Heaven Alakraa</title>
+<title>Can Opener — Mechanical Design, Documentation &amp; Analysis — Heaven Alakraa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -71,7 +71,7 @@
   <a class="back-link" href="index.html#projects">← Back to projects</a>
 
   <div class="pp-year">2024–2025 · Computer-Aided Visualization &amp; Design</div>
-  <h1 class="pp-title">Can Opener — Mechanical Design &amp; Documentation</h1>
+  <h1 class="pp-title">Can Opener — Mechanical Design, Documentation, and Analysis</h1>
   <div class="pp-tags">
     <span class="project-tag">SolidWorks</span>
     <span class="project-tag">GD&amp;T · ASME Y14.5</span>
@@ -146,6 +146,27 @@
       </div>
       <div class="viewer-hint">Drag to orbit · scroll to zoom · drag the slider to explode</div>
     </div>
+  </section>
+
+  <!-- ===== FEA ===== -->
+  <section class="pp-section">
+    <h2>Finite element analysis</h2>
+    <p>To check that the design survives real use, I ran a static study in SolidWorks Simulation on the assembly in AISI 304 stainless steel. The handles were fixed at their hinge pins, the connecting bolt was constrained on its cylindrical face, and a 200 N grip force (a firm human squeeze) was applied across the handle faces. The result is a von Mises stress plot compared against the material's yield strength.</p>
+    <figure class="media-figure center">
+      <img src="co/fea.png" alt="von Mises stress plot of the can opener assembly under grip load">
+      <figcaption>Static von Mises stress under a 200 N grip load (AISI 304, yield ≈ 207 MPa).</figcaption>
+    </figure>
+    <p>Across the bulk of the structure, stresses stay far below the 207 MPa yield strength — the assembly is comfortably safe under normal operation. The lone high reading appears as a tiny spot at the fixed hinge constraint: a classic stress singularity, an artifact of an idealized "perfectly rigid" boundary condition rather than a real failure point. In a refined model it would be relieved with a fillet at that corner. Interpreting that distinction — between a genuine overstress and a meshing/constraint artifact — was the most useful part of the exercise.</p>
+  </section>
+
+  <!-- ===== MOTION ===== -->
+  <section class="pp-section">
+    <h2>Motion analysis</h2>
+    <p>I built a motion study to verify the gear train actually drives the mechanism: turning the knob rotates the small gear (Gear 2), which meshes with the larger feed gear (Gear 1) to walk the opener around a can. The animation confirms the gears stay meshed through the cycle and that the mechanical advantage behaves as intended.</p>
+    <figure class="media-figure vid">
+      <video src="co/motion.mp4" controls muted playsinline preload="metadata"></video>
+      <figcaption>Motion study of the knob-driven gear train.</figcaption>
+    </figure>
   </section>
 
   <!-- ===== DRAWING PACKAGE ===== -->
