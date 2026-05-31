@@ -7,64 +7,82 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  .media-figure img { width: 100%; display: block; border-radius: 12px; border: 1px solid var(--border); background: var(--light); object-fit: contain; max-height: 520px; cursor: zoom-in; transition: transform 0.15s, box-shadow 0.15s; }
+  .media-figure img:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
+  .media-figure.center img { width: auto; max-width: 620px; margin: 0 auto; }
+  .figure-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; align-items: start; }
+  .figure-row .media-figure { margin: 0; }
+  .figure-row .media-figure img { max-height: 460px; }
+  .wip-badge { display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #8a5a00; background: #fdf0d5; border: 1px solid #f0d9a0; border-radius: 50px; padding: 5px 14px; margin-bottom: 18px; }
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 96%; max-height: 94%; border-radius: 8px; cursor: default; }
+  .lightbox-close { position: fixed; top: 18px; right: 24px; color: #fff; font-size: 34px; line-height: 1; background: none; border: none; cursor: pointer; font-family: var(--sans); }
+  .lightbox-hint { position: fixed; bottom: 22px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.6); font-size: 13px; }
+  @media (max-width: 700px) { .figure-row { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
+<!-- NAV -->
+<nav>
+  <div class="nav-pill">
+    <a href="index.html#intro">Intro</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#interactive">Interactive</a>
+    <a href="index.html#skills">Skillset</a>
+  </div>
+</nav>
 
 <article class="project-page">
   <a class="back-link" href="index.html#projects">← Back to projects</a>
 
-  <div class="pp-year">2026 – Present</div>
+  <div class="pp-year">2026 – Present · Bioengineering Lab, Orthopedics at Rhode Island Hospital</div>
   <h1 class="pp-title">Pendulum Friction Testing Apparatus</h1>
   <div class="pp-tags">
     <span class="project-tag">SolidWorks</span>
     <span class="project-tag">Tribology</span>
+    <span class="project-tag">Test-Rig Design</span>
     <span class="project-tag">Research</span>
   </div>
-  <p class="pp-lead">Research engineering at the Bioengineering Laboratory, Orthopedics Department at Rhode Island Hospital — building an apparatus to measure friction in biological joints.</p>
+  <p class="pp-lead">Designing an apparatus to measure friction in biological joints by watching how a pendulum's swing decays. Currently designing the passive pendulum in SolidWorks.</p>
 
-  <figure class="media-figure">
-    <div class="img-placeholder">Add a CAD render or rig photo here</div>
-    <figcaption>Pendulum apparatus (replace with your image)</figcaption>
-  </figure>
+  <span class="wip-badge">● Ongoing — current research</span>
 
+  <!--
+    Save a SolidWorks render of the passive pendulum as:  pend/cad.png
+    and a scan/photo of your design sketch as:            pend/sketch.png
+    (white background / clean scan). Both are click-to-zoom.
+  -->
+  <div class="figure-row">
+    <figure class="media-figure">
+      <img src="pend/cad.png" alt="SolidWorks model of the passive pendulum apparatus">
+      <figcaption>Passive pendulum apparatus — current SolidWorks model.</figcaption>
+    </figure>
+    <figure class="media-figure">
+      <img src="pend/sketch.png" alt="Hand sketch of the pendulum apparatus design">
+      <figcaption>Early design sketch behind the model.</figcaption>
+    </figure>
+  </div>
+
+  <!-- ===== THE GOAL ===== -->
   <section class="pp-section">
-    <h2>Overview</h2>
-    <ul>
-      <li>Designing active and passive pendulum testing apparatus in SolidWorks to measure coefficients of friction in biological joints.</li>
-      <li>Fabricating and assembling an experimental testing device in the RIH Orthopaedic Foundation testing facility.</li>
-      <li>Conducting mechanical validation to characterize the tribological properties of soft tissue structures under physiological loading conditions.</li>
-    </ul>
+    <h2>The goal</h2>
+    <p>This research, at the Bioengineering Laboratory in the Orthopedics Department at Rhode Island Hospital, aims to measure the coefficient of friction inside biological joints. Joint friction is central to understanding cartilage health, wear, and the performance of implants — but it's difficult to measure directly. The apparatus is the instrument that makes that measurement possible.</p>
   </section>
 
+  <!-- ===== HOW IT WORKS ===== -->
   <section class="pp-section">
-    <h2>Process</h2>
-    <div class="step-block">
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <h3>Design</h3>
-        <p>Modeling active and passive pendulum configurations in SolidWorks for joint friction measurement.</p>
-      </div>
-    </div>
-    <div class="step-block">
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <h3>Fabrication &amp; assembly</h3>
-        <p>Building the rig in the RIH Orthopaedic Foundation testing facility.</p>
-      </div>
-    </div>
-    <div class="step-block">
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <h3>Validation</h3>
-        <p>Characterizing tribological behavior of soft tissue under physiological loading.</p>
-      </div>
-    </div>
+    <h2>How it works: friction from swing decay</h2>
+    <p>The method uses a simple physical principle. If you mount a joint specimen as the pivot of a pendulum and set it swinging, friction in the joint is the main thing draining energy from the motion — so the swing amplitude decays over time. The faster it decays, the higher the friction. By recording how the swing dies down, you can back out the joint's coefficient of friction. It's an elegant way to measure something otherwise hard to access.</p>
+    <p>A <strong>passive</strong> pendulum (the version I'm designing now) simply swings freely and is left to decay — clean and well-suited to characterizing friction on its own. An <strong>active</strong> variant, planned as future work, would drive the motion to test the joint under controlled, sustained conditions.</p>
   </section>
 
+  <!-- ===== WHERE IT STANDS ===== -->
   <section class="pp-section">
-    <h2>Gallery</h2>
-    <figure class="media-figure"><div class="img-placeholder">CAD assembly view</div></figure>
-    <figure class="media-figure"><div class="img-placeholder">Testing rig photo</div></figure>
+    <h2>Where it stands</h2>
+    <p>I'm currently designing the passive pendulum in SolidWorks, working from an initial concept sketch toward a buildable model — defining the pivot mounting for the specimen, the swinging arm, and how motion will be recorded. Next steps are finalizing the design, fabricating and assembling the rig in the RIH Orthopaedic Foundation testing facility, and running mechanical validation to characterize joint friction under physiological loading.</p>
   </section>
 
   <a class="back-link" href="index.html#projects" style="margin-top:48px;">← Back to projects</a>
@@ -78,5 +96,21 @@
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-hint">Click anywhere or press Esc to close</div>
+</div>
+<script>
+  (function () {
+    const lb = document.getElementById('lightbox'); const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.media-figure img').forEach(img => {
+      img.addEventListener('click', () => { lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt; lb.classList.add('open'); document.body.style.overflow = 'hidden'; });
+    });
+    function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  })();
+</script>
 </body>
 </html>

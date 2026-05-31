@@ -368,7 +368,7 @@ footer a:hover { color: var(--black); }
 .pp-tags { margin-bottom: 16px; }
 .pp-lead { font-size: 18px; color: var(--gray); line-height: 1.7; margin-bottom: 8px; }
 
-.pp-section { margin-top: 64px; }
+.pp-section { margin-top: 40px; }
 .pp-section h2 {
   font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 20px;
 }
