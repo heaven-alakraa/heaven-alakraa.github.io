@@ -35,6 +35,9 @@
   .embed-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
   .embed-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; color: var(--gray); font-size: 14px; line-height: 1.7; }
 
+  /* standalone video, centered, capped width */
+  .media-figure.vid video { display: block; width: 100%; max-width: 720px; margin: 0 auto; border-radius: 12px; border: 1px solid var(--border); background: #000; }
+
   @media (max-width: 700px) { .figure-row { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -114,20 +117,21 @@
   <section class="pp-section" id="model3d">
     <h2>Interactive 3D model</h2>
     <p>Orbit, zoom, and explore the assembly below — the real SolidWorks model, in your browser.</p>
-    <!--
-      ▼ HOW TO ADD YOUR MODEL (see the Can-Opener-Sketchfab-guide for full steps):
-      1. Export the assembly from SolidWorks (Save As → STL, single file).
-      2. Upload it to a free Sketchfab account.
-      3. Open your model → Share → Embed → copy the <iframe>.
-      4. Delete the .embed-placeholder div below and paste your <iframe> in its place.
-    -->
     <div class="embed-frame">
-      <div class="embed-placeholder">
-        <strong style="color:var(--black); font-size:15px; margin-bottom:8px;">3D model goes here</strong>
-        Upload your SolidWorks assembly to Sketchfab, copy the embed code,<br>
-        and paste it in place of this box (see the Sketchfab guide).
-      </div>
+      <iframe title="Can Opener Assembly" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" src="https://sketchfab.com/models/e4e1cd4b4ae44da8bd1f2ed0fa497992/embed?autospin=0.3&ui_theme=dark"></iframe>
     </div>
+    <p style="color: var(--gray); margin-top: 14px; font-size: 14px;">Drag to orbit · scroll to zoom · double-click a part to focus.</p>
+
+    <!--
+      EXPLODED-VIEW VIDEO (Path 2 fallback).
+      If your animated GLB explode plays on Sketchfab, you can DELETE this whole
+      figure...end-figure block — the 3D viewer above already does the job.
+      Otherwise: save your SolidWorks explode animation as co/explode.mp4 and it shows here.
+    -->
+    <figure class="media-figure vid" style="margin-top:36px;">
+      <video src="co/explode.mp4" controls muted playsinline preload="metadata"></video>
+      <figcaption>Exploded-view animation — the ten parts separating along their assembly axes.</figcaption>
+    </figure>
   </section>
 
   <!-- ===== DRAWING PACKAGE ===== -->
