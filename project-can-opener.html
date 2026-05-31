@@ -3,128 +3,216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Can Opener Design &amp; Analysis — Heaven Alakraa</title>
+<title>Can Opener — Mechanical Design &amp; Documentation — Heaven Alakraa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* image + layout helpers kept local so there's nothing to merge into styles.css */
+  .media-figure img {
+    width: 100%; display: block; border-radius: 12px;
+    border: 1px solid var(--border); background: var(--white);
+    object-fit: contain; max-height: 560px;
+  }
+  .media-figure.center img { width: auto; max-width: 620px; margin: 0 auto; }
+  .media-figure.full img { width: 100%; max-width: 100%; max-height: none; }
+
+  .figure-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; align-items: start; }
+  .figure-row .media-figure { margin: 0; }
+  .figure-row .media-figure img { max-height: 420px; }
+
+  /* click-to-zoom */
+  .media-figure img { cursor: zoom-in; transition: transform 0.15s, box-shadow 0.15s; }
+  .media-figure img:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 96%; max-height: 94%; border-radius: 8px; cursor: default; }
+  .lightbox-close { position: fixed; top: 18px; right: 24px; color: #fff; font-size: 34px; line-height: 1; background: none; border: none; cursor: pointer; font-family: var(--sans); }
+  .lightbox-hint { position: fixed; bottom: 22px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.6); font-size: 13px; }
+
+  /* 3D embed */
+  .embed-frame { position: relative; padding-bottom: 60%; height: 0; overflow: hidden; margin-top: 32px; border-radius: 16px; border: 1px solid var(--border); background: var(--light); }
+  .embed-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+  .embed-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; color: var(--gray); font-size: 14px; line-height: 1.7; }
+
+  @media (max-width: 700px) { .figure-row { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
+<!-- NAV -->
+<nav>
+  <div class="nav-pill">
+    <a href="index.html#intro">Intro</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#interactive">Interactive</a>
+    <a href="index.html#skills">Skillset</a>
+  </div>
+</nav>
 
 <article class="project-page">
   <a class="back-link" href="index.html#projects">← Back to projects</a>
 
-  <div class="pp-year">2024–2025</div>
-  <h1 class="pp-title">Can Opener Mechanical Design &amp; Analysis</h1>
+  <div class="pp-year">2024–2025 · Computer-Aided Visualization &amp; Design</div>
+  <h1 class="pp-title">Can Opener — Mechanical Design &amp; Documentation</h1>
   <div class="pp-tags">
     <span class="project-tag">SolidWorks</span>
-    <span class="project-tag">FEA</span>
-    <span class="project-tag">Motion Analysis</span>
+    <span class="project-tag">GD&amp;T · ASME Y14.5</span>
     <span class="project-tag">Engineering Drawings</span>
+    <span class="project-tag">Gear Mechanism</span>
   </div>
-  <p class="pp-lead">A fully constrained multi-component can opener assembly designed from the ground up in SolidWorks — my primary project for Computer Aided Visualization and Design.</p>
+  <p class="pp-lead">A complete product-definition package for a rotary can opener — every component modeled in SolidWorks, assembled into a fully mated mechanism, and documented with a full set of industry-standard 2D engineering drawings including cross-section and exploded views.</p>
 
-  <!-- HERO IMAGE: replace src with your render. Delete the placeholder div if you add an <img>. -->
-  <figure class="media-figure">
-    <div class="img-placeholder">Add a hero render here — e.g. &lt;img src="canopener/hero.jpg"&gt;</div>
-    <!-- <img src="canopener/hero.jpg" alt="Can opener assembly render"> -->
-    <figcaption>Full assembly render (replace with your image)</figcaption>
+  <!-- HERO: a render or the assembly drawing. Save an isometric render as co/render.png -->
+  <figure class="media-figure full">
+    <img src="co/render.png" alt="Rendered view of the can opener assembly">
+    <figcaption>The fully assembled can opener — a ten-part rotary mechanism.</figcaption>
   </figure>
 
-  <!-- ===== INTERACTIVE 3D ===== -->
+  <!-- ===== AT A GLANCE ===== -->
   <section class="pp-section">
-    <h2>Interactive 3D Model</h2>
-    <p>Orbit, zoom, and explore the real assembly below.</p>
+    <h2>At a glance</h2>
+    <p>The brief: produce a complete product definition to industry standards — coherent 3D part models, a fully constrained assembly, and a 2D drawing package for the most complex components plus the full assembly. The deliverables follow ASME Y14.5-2009 with a Critical-to-Function dimensioning scheme, meaning only the dimensions that convey design intent are called out, not every feature.</p>
+    <div class="stat-row">
+      <div class="stat-cell"><div class="stat-num">10</div><div class="stat-lbl">components modeled</div></div>
+      <div class="stat-cell"><div class="stat-num">6</div><div class="stat-lbl">2D drawings (5 parts + assembly)</div></div>
+      <div class="stat-cell"><div class="stat-num">ASME</div><div class="stat-lbl">Y14.5-2009 standard</div></div>
+      <div class="stat-cell"><div class="stat-num">CTF</div><div class="stat-lbl">critical-to-function dims</div></div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="pp-section">
+    <h2>How it works</h2>
+    <p>Squeezing the two handles clamps the cutting wheel against the can's rim. Turning the soft-touch knob drives a small gear (Gear 2) that meshes with a larger feed gear (Gear 1), and the resulting rotation walks the opener around the lip of the can while the wheel scores it open. The whole motion is a compact gear train: a hand input converted into controlled rotary cutting force. Capturing that interplay — handles, pivot, gear mesh, and cutting wheel — was the core modeling challenge.</p>
+  </section>
+
+  <!-- ===== BOM ===== -->
+  <section class="pp-section">
+    <h2>Bill of materials</h2>
+    <p>Ten components, with materials chosen to make the product "make sense" — structural parts in stainless steel, the connector in brass, and the grip knob in soft-touch plastic.</p>
+    <table class="data-table">
+      <thead>
+        <tr><th>#</th><th>Part</th><th>Material</th><th>Qty</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Handle 1</td><td>Stainless steel</td><td>1</td></tr>
+        <tr><td>2</td><td>Handle 2</td><td>Stainless steel</td><td>1</td></tr>
+        <tr><td>3</td><td>Gear 1</td><td>Stainless steel</td><td>1</td></tr>
+        <tr><td>4</td><td>Connector</td><td>Brass</td><td>1</td></tr>
+        <tr><td>5</td><td>Gear 2</td><td>Stainless steel</td><td>1</td></tr>
+        <tr><td>6</td><td>Rotating knob</td><td>Soft-touch plastic</td><td>1</td></tr>
+        <tr><td>7</td><td>O-ring</td><td>Stainless steel</td><td>1</td></tr>
+        <tr><td>8</td><td>Dowel pin — ISO 8752, 8×10</td><td>Steel</td><td>1</td></tr>
+        <tr><td>9</td><td>Screw — ISO 7045, M5×16</td><td>Stainless steel</td><td>1</td></tr>
+        <tr><td>10</td><td>Screw — ISO 7045, M5×8</td><td>Stainless steel</td><td>1</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== INTERACTIVE 3D ===== -->
+  <section class="pp-section" id="model3d">
+    <h2>Interactive 3D model</h2>
+    <p>Orbit, zoom, and explore the assembly below — the real SolidWorks model, in your browser.</p>
     <!--
-      Paste your Sketchfab <iframe> in place of the placeholder div.
-      (Free account at sketchfab.com > upload your SolidWorks/STL export > Share > Embed.)
+      ▼ HOW TO ADD YOUR MODEL (see the Can-Opener-Sketchfab-guide for full steps):
+      1. Export the assembly from SolidWorks (Save As → STL, single file).
+      2. Upload it to a free Sketchfab account.
+      3. Open your model → Share → Embed → copy the <iframe>.
+      4. Delete the .embed-placeholder div below and paste your <iframe> in its place.
     -->
     <div class="embed-frame">
       <div class="embed-placeholder">
         <strong style="color:var(--black); font-size:15px; margin-bottom:8px;">3D model goes here</strong>
-        Upload your assembly to Sketchfab and paste the embed code in place of this box.
+        Upload your SolidWorks assembly to Sketchfab, copy the embed code,<br>
+        and paste it in place of this box (see the Sketchfab guide).
       </div>
     </div>
   </section>
 
-  <!-- ===== OVERVIEW ===== -->
+  <!-- ===== DRAWING PACKAGE ===== -->
   <section class="pp-section">
-    <h2>Overview</h2>
-    <p>I designed and fully constrained every component of this can opener, then validated the design through simulation and produced a complete manufacturing drawing package.</p>
-    <ul>
-      <li>Produced detailed 2D engineering drawings, a fully mated assembly, exploded views, and a complete drawing package for all components.</li>
-      <li>Conducted static Finite Element Analysis (FEA) on components under operational loading, validating the design against stainless steel's yield strength.</li>
-      <li>Performed motion analysis on the gear train, quantifying mechanical advantage and contact force distribution across a full rotation cycle.</li>
-      <li>Designed the gear tooth profile, frame geometry, and ergonomic handle form.</li>
-    </ul>
+    <h2>The drawing package</h2>
+    <p>The assembly drawing spans two C-size sheets and includes a cross-section view (Sections A-A and B-B), a Detail C at 2:1 to clarify the gear mesh, an exploded view with balloons, and a BOM table — all dimensioned to convey design intent rather than every feature. Click either sheet to view it full-size.</p>
+    <div class="figure-row">
+      <figure class="media-figure">
+        <img src="co/drawing-sheet1.png" alt="Assembly drawing sheet 1 — detail and section views">
+        <figcaption>Sheet 1 — orthographic, detail (2:1), and section views.</figcaption>
+      </figure>
+      <figure class="media-figure">
+        <img src="co/drawing-sheet2.png" alt="Assembly drawing sheet 2 — exploded view and BOM">
+        <figcaption>Sheet 2 — exploded view with balloons and the BOM.</figcaption>
+      </figure>
+    </div>
+    <!--
+      Optional: add individual component drawings too. Save them as
+      co/part-handle.png, co/part-gear1.png, etc., then duplicate a figure block above.
+    -->
   </section>
 
-  <!-- ===== PROCESS / STEPS ===== -->
+  <!-- =========================================================
+       OPTIONAL: FEA + MOTION ANALYSIS
+       These sections are commented out. If you run the studies, (1) save the
+       images into the co/ folder with the names shown, and (2) delete the
+       surrounding  >!--  and  --<  so the section becomes visible.
+       ========================================================= -->
+  <!--
   <section class="pp-section">
-    <h2>Design Process</h2>
+    <h2>FEA — stress under operating load</h2>
+    <p>I ran a static finite-element study on the most heavily loaded component to confirm it stays within the yield strength of stainless steel under a realistic squeezing force.</p>
+    <figure class="media-figure center">
+      <img src="co/fea.png" alt="FEA von Mises stress result on the can opener">
+      <figcaption>von Mises stress under operating load, compared against yield.</figcaption>
+    </figure>
+  </section>
 
+  <section class="pp-section">
+    <h2>Motion study — the gear train</h2>
+    <p>A motion study of the gear train shows how the knob input drives the feed gear and walks the cutter around the can.</p>
+    <figure class="media-figure center vid">
+      <video src="co/motion.mp4" controls muted playsinline preload="metadata"></video>
+      <figcaption>Gear train motion study.</figcaption>
+    </figure>
+  </section>
+  -->
+
+  <!-- ===== PROCESS ===== -->
+  <section class="pp-section">
+    <h2>Process</h2>
     <div class="step-block">
       <div class="step-num">1</div>
       <div class="step-body">
-        <h3>Concept &amp; component breakdown</h3>
-        <p>Identified each part — handle body, second arm, drive gear, feed gear, cutting wheel, screws, knob, and frame — and defined how they mate.</p>
+        <h3>Model each component</h3>
+        <p>Built all ten parts individually in SolidWorks — handles, the two gears, connector, knob, O-ring, and fasteners — making sound geometric decisions so the parts form a coherent product.</p>
       </div>
     </div>
-
     <div class="step-block">
       <div class="step-num">2</div>
       <div class="step-body">
-        <h3>Part modeling in SolidWorks</h3>
-        <p>Modeled each component individually, including the involute gear tooth profile and the ergonomic handle.</p>
-        <!-- Add a screenshot: <figure class="media-figure"><img src="canopener/part.jpg"></figure> -->
+        <h3>Assemble &amp; mate</h3>
+        <p>Constrained the parts into a fully mated assembly so the gear train and handles move as a real mechanism, with no interference.</p>
       </div>
     </div>
-
     <div class="step-block">
       <div class="step-num">3</div>
       <div class="step-body">
-        <h3>Assembly &amp; mating</h3>
-        <p>Built a fully constrained assembly with zero degrees of freedom error, then generated exploded views.</p>
+        <h3>Detail the drawings</h3>
+        <p>Produced 2D drawings for the five most complex components plus the full assembly, using section and detail views and a Critical-to-Function dimensioning scheme per ASME Y14.5-2009.</p>
       </div>
     </div>
-
     <div class="step-block">
       <div class="step-num">4</div>
       <div class="step-body">
-        <h3>FEA &amp; motion analysis</h3>
-        <p>Ran static FEA under operating loads and a motion study across a full rotation to characterize mechanical advantage and gear contact forces.</p>
-      </div>
-    </div>
-
-    <div class="step-block">
-      <div class="step-num">5</div>
-      <div class="step-body">
-        <h3>Drawing package</h3>
-        <p>Delivered dimensioned 2D drawings and a complete documentation set ready for manufacture.</p>
+        <h3>Package the deliverable</h3>
+        <p>Compiled the exploded view, cross-sections, and BOM into a clean, professional drawing set — a complete product-definition archive.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== VIDEO ===== -->
+  <!-- ===== TAKEAWAYS ===== -->
   <section class="pp-section">
-    <h2>Walkthrough Video</h2>
-    <p>Embed a motion-study or assembly animation here.</p>
-    <!--
-      OPTION A (YouTube/Vimeo): paste the embed iframe in place of the comment below.
-      <div class="video-embed"><iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe></div>
-
-      OPTION B (a local .mp4 file in your repo):
-      <div class="video-embed"><video src="canopener/motion-study.mp4" controls></video></div>
-    -->
-    <div class="video-embed">
-      <div class="embed-placeholder">Add a YouTube/Vimeo embed or a local .mp4 here (see HTML comment).</div>
-    </div>
-  </section>
-
-  <!-- ===== GALLERY ===== -->
-  <section class="pp-section">
-    <h2>Gallery</h2>
-    <figure class="media-figure"><div class="img-placeholder">Drawing package / exploded view image</div></figure>
-    <figure class="media-figure"><div class="img-placeholder">FEA result screenshot</div></figure>
+    <h2>What I took away</h2>
+    <p>This project was as much about communication as modeling: a drawing is only useful if another engineer can build the part from it. Choosing which dimensions express design intent — and which to leave off — taught me to think like the person downstream of my work. Capturing a working gear mechanism in a fully mated assembly also pushed my SolidWorks skills well beyond single parts.</p>
   </section>
 
   <a class="back-link" href="index.html#projects" style="margin-top:48px;">← Back to projects</a>
@@ -137,6 +225,31 @@
     <a href="index.html#about">About</a>
   </div>
 </footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-hint">Click anywhere or press Esc to close</div>
+</div>
+
+<script>
+  (function () {
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.media-figure img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt;
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  })();
+</script>
 
 </body>
 </html>
