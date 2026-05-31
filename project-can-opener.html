@@ -38,7 +38,21 @@
   /* standalone video, centered, capped width */
   .media-figure.vid video { display: block; width: 100%; max-width: 720px; margin: 0 auto; border-radius: 12px; border: 1px solid var(--border); background: #000; }
 
-  @media (max-width: 700px) { .figure-row { grid-template-columns: 1fr; } }
+  /* interactive 3D viewer */
+  .viewer { margin-top: 28px; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: var(--white); }
+  .viewer-controls { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .viewer-controls label { font-size: 13px; font-weight: 500; color: var(--gray); }
+  .viewer-controls input[type=range] { flex: 1; min-width: 160px; accent-color: var(--black); cursor: pointer; }
+  .slider-val { font-size: 13px; font-weight: 500; min-width: 44px; text-align: right; }
+  .viewer-controls button { font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 50px; border: 1.5px solid var(--black); background: transparent; color: var(--black); cursor: pointer; font-family: var(--sans); transition: all 0.2s; white-space: nowrap; }
+  .viewer-controls button:hover { background: var(--black); color: var(--white); }
+  .viewer-stage { position: relative; width: 100%; height: 520px; background: #f0f0ee; }
+  #co-canvas { width: 100%; height: 100%; display: block; cursor: grab; }
+  #co-canvas:active { cursor: grabbing; }
+  .viewer-loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--gray); font-size: 14px; pointer-events: none; }
+  .viewer-hint { padding: 14px 20px; border-top: 1px solid var(--border); font-size: 13px; color: var(--gray); text-align: center; }
+
+  @media (max-width: 700px) { .figure-row { grid-template-columns: 1fr; } .viewer-stage { height: 380px; } }
 </style>
 </head>
 <body>
@@ -116,22 +130,22 @@
   <!-- ===== INTERACTIVE 3D ===== -->
   <section class="pp-section" id="model3d">
     <h2>Interactive 3D model</h2>
-    <p>Orbit, zoom, and explore the assembly below — the real SolidWorks model, in your browser.</p>
-    <div class="embed-frame">
-      <iframe title="Can Opener Assembly" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" src="https://sketchfab.com/models/e4e1cd4b4ae44da8bd1f2ed0fa497992/embed?autospin=0.3&ui_theme=dark"></iframe>
-    </div>
-    <p style="color: var(--gray); margin-top: 14px; font-size: 14px;">Drag to orbit · scroll to zoom · double-click a part to focus.</p>
+    <p>This is my real SolidWorks assembly, running live in your browser. Drag to orbit, scroll to zoom, and use the slider to explode the ten parts apart and back together.</p>
 
-    <!--
-      EXPLODED-VIEW VIDEO (Path 2 fallback).
-      If your animated GLB explode plays on Sketchfab, you can DELETE this whole
-      figure...end-figure block — the 3D viewer above already does the job.
-      Otherwise: save your SolidWorks explode animation as co/explode.mp4 and it shows here.
-    -->
-    <figure class="media-figure vid" style="margin-top:36px;">
-      <video src="co/explode.mp4" controls muted playsinline preload="metadata"></video>
-      <figcaption>Exploded-view animation — the ten parts separating along their assembly axes.</figcaption>
-    </figure>
+    <div class="viewer">
+      <div class="viewer-controls">
+        <label for="explode-slider">Explode</label>
+        <input type="range" id="explode-slider" min="0" max="100" value="0" step="1">
+        <span class="slider-val" id="explode-val">0%</span>
+        <button id="auto-btn" type="button">Auto ▶</button>
+        <button id="reset-btn" type="button">Reset view</button>
+      </div>
+      <div class="viewer-stage">
+        <canvas id="co-canvas"></canvas>
+        <div class="viewer-loading" id="viewer-loading">Loading 3D model…</div>
+      </div>
+      <div class="viewer-hint">Drag to orbit · scroll to zoom · drag the slider to explode</div>
+    </div>
   </section>
 
   <!-- ===== DRAWING PACKAGE ===== -->
@@ -253,6 +267,141 @@
     lb.addEventListener('click', close);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   })();
+</script>
+
+<!-- ===== INTERACTIVE 3D VIEWER (Three.js) ===== -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+  import * as THREE from 'three';
+  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+  const canvas = document.getElementById('co-canvas');
+  const stage = canvas.parentElement;
+  const loadingEl = document.getElementById('viewer-loading');
+  const slider = document.getElementById('explode-slider');
+  const valLabel = document.getElementById('explode-val');
+  const resetBtn = document.getElementById('reset-btn');
+  const autoBtn = document.getElementById('auto-btn');
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0xf0f0ee, 1);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 5000);
+
+  // lighting
+  scene.add(new THREE.AmbientLight(0xffffff, 0.75));
+  const key = new THREE.DirectionalLight(0xffffff, 1.1); key.position.set(1, 1.5, 1); scene.add(key);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.5); fill.position.set(-1, 0.5, -1); scene.add(fill);
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.08;
+
+  let parts = [];            // { mesh, dir, home }
+  let assemblyCenter = new THREE.Vector3();
+  let modelRadius = 100;
+  let homeCam = new THREE.Vector3();
+
+  function resize() {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+
+  const loader = new GLTFLoader();
+  loader.load('co/can-opener.glb', (gltf) => {
+    const root = gltf.scene;
+
+    // overall bounding box / center
+    const box = new THREE.Box3().setFromObject(root);
+    box.getCenter(assemblyCenter);
+    const size = new THREE.Vector3(); box.getSize(size);
+    modelRadius = Math.max(size.x, size.y, size.z);
+
+    // each mesh: explode direction = from assembly center to part center
+    root.traverse((o) => {
+      if (o.isMesh) {
+        const pbox = new THREE.Box3().setFromObject(o);
+        const pcenter = new THREE.Vector3(); pbox.getCenter(pcenter);
+        const dir = pcenter.clone().sub(assemblyCenter);
+        if (dir.lengthSq() < 1e-6) dir.set(0, 1, 0); // center part: nudge up
+        dir.normalize();
+        parts.push({ mesh: o, dir, home: o.position.clone() });
+      }
+    });
+
+    scene.add(root);
+
+    // frame the camera
+    const dist = modelRadius * 2.2;
+    homeCam.set(assemblyCenter.x + dist * 0.7, assemblyCenter.y + dist * 0.5, assemblyCenter.z + dist * 0.8);
+    controls.target.copy(assemblyCenter);
+    resetView();
+
+    loadingEl.style.display = 'none';
+    resize();
+    animate();
+  }, undefined, (err) => {
+    loadingEl.textContent = 'Could not load the 3D model.';
+    console.error(err);
+  });
+
+  function applyExplode(pct) {
+    const factor = (pct / 100) * modelRadius * 0.9;
+    for (const p of parts) {
+      p.mesh.position.copy(p.home).addScaledVector(p.dir, factor);
+    }
+  }
+
+  function resetView() {
+    camera.position.copy(homeCam);
+    controls.target.copy(assemblyCenter);
+    controls.update();
+  }
+
+  slider.addEventListener('input', () => {
+    valLabel.textContent = slider.value + '%';
+    applyExplode(+slider.value);
+  });
+
+  resetBtn.addEventListener('click', () => {
+    slider.value = 0; valLabel.textContent = '0%'; applyExplode(0); resetView();
+    stopAuto();
+  });
+
+  // auto explode/collapse loop
+  let auto = false, dir = 1, raf = null;
+  function stopAuto() { auto = false; autoBtn.textContent = 'Auto ▶'; }
+  autoBtn.addEventListener('click', () => {
+    auto = !auto;
+    autoBtn.textContent = auto ? 'Pause ⏸' : 'Auto ▶';
+    if (auto) dir = (+slider.value >= 100) ? -1 : 1;
+  });
+
+  let last = performance.now();
+  function animate() {
+    raf = requestAnimationFrame(animate);
+    const now = performance.now(); const dt = (now - last) / 1000; last = now;
+    if (auto) {
+      let v = +slider.value + dir * 45 * dt; // ~2.2s each way
+      if (v >= 100) { v = 100; dir = -1; }
+      if (v <= 0)   { v = 0;   dir = 1; }
+      slider.value = v; valLabel.textContent = Math.round(v) + '%'; applyExplode(v);
+    }
+    controls.update();
+    renderer.render(scene, camera);
+  }
 </script>
 
 </body>
