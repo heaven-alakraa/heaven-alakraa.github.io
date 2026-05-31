@@ -371,7 +371,7 @@
     scene.add(root);
 
     // frame the camera
-    const dist = modelRadius * 1.5;
+    const dist = modelRadius * 0.75;
     homeCam.set(assemblyCenter.x + dist * 0.7, assemblyCenter.y + dist * 0.5, assemblyCenter.z + dist * 0.8);
     controls.target.copy(assemblyCenter);
     resetView();
