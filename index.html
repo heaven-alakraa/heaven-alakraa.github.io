@@ -123,7 +123,7 @@
             <div class="exp-org">Brown School of Engineering | National Education Opportunity Network</div>
             <div class="exp-role">Teaching Fellow</div>
           </div>
-          <div class="exp-date">Fall 2025, Fall 2026</div>
+          <div class="exp-date">Aug 2026–</div>
         </div>
       </div>
       <div class="exp-item">
@@ -152,7 +152,7 @@
     <a class="project-card wide" href="project-can-opener.html">
       <span class="project-arrow">↗</span>
       <div>
-        <div class="project-year">2025</div>
+        <div class="project-year">2024–2025</div>
         <div class="project-title">Can Opener — Mechanical Design, Documentation, and Analysis</div>
         <div class="project-desc">Fully constrained ten-part assembly in SolidWorks — with static FEA, a gear-train motion study, an ASME Y14.5 drawing package, and a live interactive 3D model you can explode in the browser.</div>
       </div>
@@ -160,8 +160,7 @@
         <span class="project-tag">SolidWorks</span>
         <span class="project-tag">FEA</span>
         <span class="project-tag">Motion Analysis</span>
-        <span class="project-tag">GD&T, ASME Y14.5</span>
-        <span class="project-tag"> 2D Engineering Drawings</span>
+        <span class="project-tag">Engineering Drawings</span>
       </div>
     </a>
 
@@ -176,8 +175,7 @@
       <div>
         <span class="project-tag">MATLAB</span>
         <span class="project-tag">Fabrication</span>
-        <span class="project-tag">Euler–Bernoulli Theory</span>
-        <span class="project-tag">Brown Design Workshop</span>
+        <span class="project-tag">BDW</span>
       </div>
     </a>
 
@@ -190,10 +188,9 @@
         <div class="project-desc">Screened 4,395 materials in Ansys Granta Edupack. Identified Polyetherimide (PEI) as a leading candidate for future clinical VBR applications.</div>
       </div>
       <div>
-        <span class="project-tag">Ansys Granta EduPack</span>
-        <span class="project-tag">SolidWorks FEA</span>
-        <span class="project-tag">Biomedical Design</span>
-        <span class="project-tag">Material Selection</span>
+        <span class="project-tag">Ansys Granta</span>
+        <span class="project-tag">FEA</span>
+        <span class="project-tag">Biomedical</span>
       </div>
     </a>
 
@@ -223,22 +220,37 @@
       <div>
         <span class="project-tag">SolidWorks</span>
         <span class="project-tag">3D Printing</span>
-        <span class="project-tag">Biotech Innovation</span>
+        <span class="project-tag">Biotech</span>
       </div>
     </a>
 
-    <!-- Pendulum Testing (full-width for now; remove "wide" when you add a 7th project) -->
-    <a class="project-card wide" href="project-pendulum.html">
+    <!-- Penny-Farthing -->
+    <a class="project-card" href="project-penny-farthing.html">
+      <span class="project-arrow">↗</span>
+      <div>
+        <div class="project-year">2025</div>
+        <div class="project-title">Penny-Farthing — Wheels, Tires &amp; CAM</div>
+        <div class="project-desc">Modeled both rims and tires in SolidWorks using section-view revolves and reference-geometry spoke holes, plus a CAM toolpath analysis and full drawings — my part of a team penny-farthing reconstruction.</div>
+      </div>
+      <div>
+        <span class="project-tag">SolidWorks</span>
+        <span class="project-tag">CAM</span>
+        <span class="project-tag">Drawings</span>
+      </div>
+    </a>
+
+    <!-- Pendulum Testing -->
+    <a class="project-card" href="project-pendulum.html">
       <span class="project-arrow">↗</span>
       <div>
         <div class="project-year">2026 – Present</div>
         <div class="project-title">Pendulum Friction Testing Apparatus</div>
-        <div class="project-desc">Designing and building active and passive pendulum apparatus to measure coefficients of friction in biological joints at Rhode Island Hospital's Orthopaedic Department.</div>
+        <div class="project-desc">Designing active and passive pendulum apparatus in SolidWorks to measure coefficients of friction in biological joints at Rhode Island Hospital's Orthopaedic Foundation.</div>
       </div>
       <div>
         <span class="project-tag">SolidWorks</span>
         <span class="project-tag">Tribology</span>
-        <span class="project-tag">Biomechanics Research</span>
+        <span class="project-tag">Research</span>
       </div>
     </a>
 
@@ -251,7 +263,7 @@
 <section id="interactive">
   <span class="section-label">Interactive</span>
   <h2 class="section-title">Can Opener — Interactive 3D Model</h2>
-  <p style="color: var(--gray); margin-bottom: 0; font-size: 15px;">
+  <p style="color: var(--gray); margin-bottom: 0; font-size: 15px; max-width: 560px;">
     My real SolidWorks assembly, live in your browser. Drag to orbit, scroll to zoom, and use the slider to explode the ten parts apart and back together.
   </p>
 
@@ -447,7 +459,7 @@ setActive('intro'); // default on load
         }
       });
       scene.add(root);
-      const dist = modelRadius * 0.75;
+      const dist = modelRadius * 1.5;
       homeCam.set(assemblyCenter.x + dist * 0.7, assemblyCenter.y + dist * 0.5, assemblyCenter.z + dist * 0.8);
       controls.target.copy(assemblyCenter);
       resetView();

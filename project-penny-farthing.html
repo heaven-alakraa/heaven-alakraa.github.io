@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Penny-Farthing — Wheels, Tires &amp; CAM — Heaven Alakraa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* image + layout helpers kept local so there's nothing to merge into styles.css */
+  .media-figure img {
+    width: 100%; display: block; border-radius: 12px;
+    border: 1px solid var(--border); background: var(--light);
+    object-fit: contain; max-height: 560px;
+    cursor: zoom-in; transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .media-figure img:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
+  .media-figure.center img { width: auto; max-width: 520px; margin: 0 auto; }
+  .media-figure.tall img { max-height: 640px; width: auto; max-width: 100%; margin: 0 auto; }
+
+  .figure-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; align-items: start; }
+  .figure-row .media-figure { margin: 0; }
+  .figure-row .media-figure img { max-height: 420px; }
+
+  /* standalone video */
+  .media-figure.vid video { display: block; width: 100%; max-width: 720px; margin: 0 auto; border-radius: 12px; border: 1px solid var(--border); background: #000; cursor: default; }
+
+  /* optional Sketchfab embed slot */
+  .embed-frame { position: relative; padding-bottom: 60%; height: 0; overflow: hidden; margin-top: 28px; border-radius: 16px; border: 1px solid var(--border); background: var(--light); }
+  .embed-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+  .embed-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; color: var(--gray); font-size: 14px; line-height: 1.7; }
+
+  /* lightbox */
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 96%; max-height: 94%; border-radius: 8px; cursor: default; }
+  .lightbox-close { position: fixed; top: 18px; right: 24px; color: #fff; font-size: 34px; line-height: 1; background: none; border: none; cursor: pointer; font-family: var(--sans); }
+  .lightbox-hint { position: fixed; bottom: 22px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.6); font-size: 13px; }
+
+  @media (max-width: 700px) { .figure-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+  <div class="nav-pill">
+    <a href="index.html#intro">Intro</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#interactive">Interactive</a>
+    <a href="index.html#skills">Skillset</a>
+  </div>
+</nav>
+
+<article class="project-page">
+  <a class="back-link" href="index.html#projects">← Back to projects</a>
+
+  <div class="pp-year">2025 · ENGN 1740 · Computer-Aided Visualization &amp; Design</div>
+  <h1 class="pp-title">Penny-Farthing — Wheels, Tires &amp; CAM</h1>
+  <div class="pp-tags">
+    <span class="project-tag">SolidWorks</span>
+    <span class="project-tag">Reference Geometry</span>
+    <span class="project-tag">CAM</span>
+    <span class="project-tag">Engineering Drawings</span>
+  </div>
+  <p class="pp-lead">A team reconstruction of a Victorian penny-farthing bicycle in SolidWorks. I owned the wheels — modeling both rims and tires from section-view revolves, the tilted spoke-hole patterns via reference geometry, a CAM toolpath analysis, and the full drawing package.</p>
+
+  <!-- HERO: full assembly -->
+  <figure class="media-figure center">
+    <img src="pf/assembly.png" alt="Full penny-farthing assembly modeled in SolidWorks">
+    <figcaption>The complete team assembly — I modeled the two wheels (rims + tires).</figcaption>
+  </figure>
+
+  <!-- ===== INTERACTIVE: FULL BIKE ===== -->
+  <section class="pp-section" id="model3d">
+    <h2>Interactive 3D model — the full bike</h2>
+    <p>Spin the complete assembly around in your browser. (To enable: export the assembly to GLB or STL, upload to a free Sketchfab account, then Share → Embed and paste the &lt;iframe&gt; in place of the box below.)</p>
+    <div class="embed-frame">
+      <div class="embed-placeholder">
+        <strong style="color:var(--black); font-size:15px; margin-bottom:8px;">Full-bike 3D model slot</strong>
+        Paste your Sketchfab &lt;iframe&gt; here (orbit view of the whole penny-farthing).
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MY ROLE ===== -->
+  <section class="pp-section">
+    <h2>My role: the wheels</h2>
+    <p>This was a large team project for ENGN 1740 (Computer-Aided Visualization &amp; Design), where each group designs a subsystem of a product and documents it to industry standards — component models and drawings, a CAM plan, a tolerance stack-up, and a verification analysis. We chose a penny-farthing: the iconic Victorian bicycle with one enormous front wheel and one small rear wheel.</p>
+    <p>We were meant to measure a physical product, but none of us had access to a real penny-farthing — they're 150-year-old antiques. So we sourced a reference 3D model online and used SolidWorks' Measure tool on the imported geometry to pull real dimensions to model against. I owned all four wheel components: the large rim and tire (front, ~26 in radius) and the small rim and tire (rear, ~9 in radius). Because several teammates' parts mated to my wheels, I also shared my cross-sections and key radii early so everyone could build to a common reference.</p>
+  </section>
+
+  <!-- ===== INTERACTIVE: WHEEL SUB-ASSEMBLY ===== -->
+  <section class="pp-section">
+    <h2>The wheel sub-assembly — in 3D</h2>
+    <p>This is the part I built: rim, tire, hub, and spokes assembled. (Optional — export just the wheel sub-assembly to GLB/STL, upload to Sketchfab, and paste the embed here.)</p>
+    <div class="embed-frame">
+      <div class="embed-placeholder">
+        <strong style="color:var(--black); font-size:15px; margin-bottom:8px;">Wheel sub-assembly 3D model slot</strong>
+        Paste a Sketchfab &lt;iframe&gt; of the wheel (rim + tire + hub + spokes) here.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW I MODELED THEM ===== -->
+  <section class="pp-section">
+    <h2>Modeling the rims &amp; tires</h2>
+    <p>Each rim and tire is a single <strong>revolve</strong>. I took a <strong>section view</strong> of the reference geometry to expose the true cross-section, modeled that 2D profile precisely, then revolved it 360° around the wheel axis. Defining the whole wheel from one well-dimensioned cross-section keeps the part accurate and lightweight.</p>
+    <div class="figure-row">
+      <figure class="media-figure">
+        <img src="pf/rim-render.png" alt="Rendered rim with spoke holes">
+        <figcaption>Rim — revolved profile with the angled spoke-hole pattern.</figcaption>
+      </figure>
+      <figure class="media-figure">
+        <img src="pf/tire-render.png" alt="Rendered tire">
+        <figcaption>Tire — revolved from its own cross-section.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== SPOKE HOLES (the centerpiece) ===== -->
+  <section class="pp-section">
+    <h2>The hard part: angled spoke holes</h2>
+    <p>The reference model had no spoke holes in the rim — so I had to engineer them from scratch. On a real wheel the spoke holes aren't drilled straight into the rim; each is <strong>tilted</strong> so its spoke can run at an angle toward the hub, alternating side to side around the wheel. Reproducing that correctly was the most demanding part of the whole model.</p>
+    <p>I worked out the tilt angle from the wheel and hub geometry, then built a chain of <strong>reference geometry</strong> to place each hole: reference <em>points</em> to locate it on the rim, a reference <em>axis</em> set at the spoke's true angle, and a reference <em>plane</em> normal to that axis. I sketched the hole as a circle on that tilted plane and used an <strong>extruded cut</strong> along the axis, then patterned the feature around the rim — alternating the tilt direction to match a real spoked wheel.</p>
+    <figure class="media-figure center">
+      <img src="pf/spoke-holes.png" alt="SolidWorks reference geometry used to create the tilted spoke holes">
+      <figcaption>The reference-geometry construction behind one tilted spoke hole — points, axis, plane, sketch, then extruded cut.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== CAM ===== -->
+  <section class="pp-section">
+    <h2>CAM toolpath analysis</h2>
+    <p>To take the rim from model to manufacturable part, I produced CAM instructions in the SolidWorks CAM add-in — generating and simulating the toolpaths a CNC mill would follow. Because the rim mixes flat, prismatic features with a curved revolved profile, I used <strong>two machining strategies</strong>:</p>
+    <ul style="color: var(--gray); line-height: 1.8;">
+      <li><strong>2.5-axis</strong> operations for the prismatic features — the spoke holes and flat faces, where the tool works at a fixed depth per pass. Fast and efficient for that geometry.</li>
+      <li><strong>3-axis</strong> contouring for the curved rim channel, where the tool moves in X, Y, and Z simultaneously to follow the revolved profile.</li>
+    </ul>
+    <p>Choosing the simpler 2.5-axis path wherever the geometry allowed, and reserving 3-axis only for the truly curved surfaces, is the kind of trade-off that keeps real machining time and cost down. The simulation below shows the toolpath sweeping the rim.</p>
+    <figure class="media-figure vid">
+      <video src="pf/cam.mp4" controls muted playsinline preload="metadata"></video>
+      <figcaption>Simulated CAM toolpath for the rim.</figcaption>
+    </figure>
+    <!-- Optional: add a screenshot of the CAM setup (colored toolpaths on the rim) as pf/cam-setup.png -->
+  </section>
+
+  <!-- ===== DRAWINGS ===== -->
+  <section class="pp-section">
+    <h2>Engineering drawings</h2>
+    <p>I produced full 2D drawings for the wheel components to the course's drawing standard — orthographic views, a section view through the channel, and a scaled detail view of the cross-section, dimensioned for the features critical to function. Click either to view full-size.</p>
+    <div class="figure-row">
+      <figure class="media-figure">
+        <img src="pf/rim-drawing.png" alt="Engineering drawing of the small rim">
+        <figcaption>Small rim — section A-A and detail view.</figcaption>
+      </figure>
+      <figure class="media-figure">
+        <img src="pf/tire-drawing.png" alt="Engineering drawing of the large tire">
+        <figcaption>Large tire — section and detail views.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== MEASUREMENT NOTES ===== -->
+  <section class="pp-section">
+    <h2>Measurement &amp; planning sketches</h2>
+    <p>Since teammates' parts depended on my wheel dimensions, I worked the cross-sections and radii out by hand first — sketching the rim and tire profiles with dimensions, and planning the spoke-hole tilt, so everyone had a shared reference before the CAD was final.</p>
+    <figure class="media-figure center">
+      <img src="pf/sketch.png" alt="Hand sketches of the rim and tire cross-sections with dimensions">
+      <figcaption>Working sketches — cross-sections, radii (large wheel R≈26 in, small R≈9 in), and the spoke-hole layout.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== TAKEAWAYS ===== -->
+  <section class="pp-section">
+    <h2>What I took away</h2>
+    <p>This project pushed my SolidWorks past basic features into the tools real parts demand — section-view revolves, reference geometry for angled features, two-strategy CAM, and a standards-compliant drawing package — while coordinating outputs a team relied on. Engineering the spoke holes from scratch, with no reference to copy, was the moment it stopped being "follow the model" and became real design.</p>
+    <p style="font-size:13px; color:var(--gray);"><em>Team project for ENGN 1740. A reference 3D model (GrabCAD) was used only as a measurement stand-in for an unavailable physical bike. My contribution: both rims, both tires, the engineered spoke-hole features, the wheel drawings, and the rim CAM analysis.</em></p>
+  </section>
+
+  <a class="back-link" href="index.html#projects" style="margin-top:48px;">← Back to projects</a>
+</article>
+
+<footer>
+  <span>© Heaven Alakraa — 2026</span>
+  <div style="display:flex; gap:20px;">
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#about">About</a>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-hint">Click anywhere or press Esc to close</div>
+</div>
+<script>
+  (function () {
+    const lb = document.getElementById('lightbox'); const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.media-figure img').forEach(img => {
+      img.addEventListener('click', () => { lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt; lb.classList.add('open'); document.body.style.overflow = 'hidden'; });
+    });
+    function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  })();
+</script>
+</body>
+</html>
