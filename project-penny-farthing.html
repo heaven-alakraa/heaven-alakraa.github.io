@@ -72,35 +72,15 @@
     <figcaption>The complete team assembly — I modeled the two wheels (rims + tires).</figcaption>
   </figure>
 
-  <!-- ===== INTERACTIVE: FULL BIKE ===== -->
-  <section class="pp-section" id="model3d">
-    <h2>Interactive 3D model — the full bike</h2>
-    <p>Spin the complete assembly around in your browser. (To enable: export the assembly to GLB or STL, upload to a free Sketchfab account, then Share → Embed and paste the &lt;iframe&gt; in place of the box below.)</p>
-    <div class="embed-frame">
-      <div class="embed-placeholder">
-        <strong style="color:var(--black); font-size:15px; margin-bottom:8px;">Full-bike 3D model slot</strong>
-        Paste your Sketchfab &lt;iframe&gt; here (orbit view of the whole penny-farthing).
-      </div>
-    </div>
-  </section>
-
   <!-- ===== MY ROLE ===== -->
   <section class="pp-section">
     <h2>My role: the wheels</h2>
     <p>This was a large team project for ENGN 1740 (Computer-Aided Visualization &amp; Design), where each group designs a subsystem of a product and documents it to industry standards — component models and drawings, a CAM plan, a tolerance stack-up, and a verification analysis. We chose a penny-farthing: the iconic Victorian bicycle with one enormous front wheel and one small rear wheel.</p>
     <p>We were meant to measure a physical product, but none of us had access to a real penny-farthing — they're 150-year-old antiques. So we sourced a reference 3D model online and used SolidWorks' Measure tool on the imported geometry to pull real dimensions to model against. I owned all four wheel components: the large rim and tire (front, ~26 in radius) and the small rim and tire (rear, ~9 in radius). Because several teammates' parts mated to my wheels, I also shared my cross-sections and key radii early so everyone could build to a common reference.</p>
-  </section>
-
-  <!-- ===== INTERACTIVE: WHEEL SUB-ASSEMBLY ===== -->
-  <section class="pp-section">
-    <h2>The wheel sub-assembly — in 3D</h2>
-    <p>This is the part I built: rim, tire, hub, and spokes assembled. (Optional — export just the wheel sub-assembly to GLB/STL, upload to Sketchfab, and paste the embed here.)</p>
-    <div class="embed-frame">
-      <div class="embed-placeholder">
-        <strong style="color:var(--black); font-size:15px; margin-bottom:8px;">Wheel sub-assembly 3D model slot</strong>
-        Paste a Sketchfab &lt;iframe&gt; of the wheel (rim + tire + hub + spokes) here.
-      </div>
-    </div>
+    <figure class="media-figure center">
+      <img src="pf/wheel-assembled.png" alt="Rendered rim and tire assembled into a complete wheel">
+      <figcaption>The rim and tire assembled into one wheel.</figcaption>
+    </figure>
   </section>
 
   <!-- ===== HOW I MODELED THEM ===== -->
@@ -124,10 +104,16 @@
     <h2>The hard part: angled spoke holes</h2>
     <p>The reference model had no spoke holes in the rim — so I had to engineer them from scratch. On a real wheel the spoke holes aren't drilled straight into the rim; each is <strong>tilted</strong> so its spoke can run at an angle toward the hub, alternating side to side around the wheel. Reproducing that correctly was the most demanding part of the whole model.</p>
     <p>I worked out the tilt angle from the wheel and hub geometry, then built a chain of <strong>reference geometry</strong> to place each hole: reference <em>points</em> to locate it on the rim, a reference <em>axis</em> set at the spoke's true angle, and a reference <em>plane</em> normal to that axis. I sketched the hole as a circle on that tilted plane and used an <strong>extruded cut</strong> along the axis, then patterned the feature around the rim — alternating the tilt direction to match a real spoked wheel.</p>
-    <figure class="media-figure center">
-      <img src="pf/spoke-holes.png" alt="SolidWorks reference geometry used to create the tilted spoke holes">
-      <figcaption>The reference-geometry construction behind one tilted spoke hole — points, axis, plane, sketch, then extruded cut.</figcaption>
-    </figure>
+    <div class="figure-row">
+      <figure class="media-figure">
+        <img src="pf/spoke-holes.png" alt="SolidWorks reference geometry used to create the tilted spoke holes">
+        <figcaption>The construction — points, axis, and a tilted plane behind one spoke hole.</figcaption>
+      </figure>
+      <figure class="media-figure">
+        <img src="pf/spoke-holes-detail.png" alt="Close-up of the finished tilted spoke holes on the rim">
+        <figcaption>The payoff — the finished angled holes on the rim.</figcaption>
+      </figure>
+    </div>
   </section>
 
   <!-- ===== CAM ===== -->
@@ -167,7 +153,7 @@
     <h2>Measurement &amp; planning sketches</h2>
     <p>Since teammates' parts depended on my wheel dimensions, I worked the cross-sections and radii out by hand first — sketching the rim and tire profiles with dimensions, and planning the spoke-hole tilt, so everyone had a shared reference before the CAD was final.</p>
     <figure class="media-figure center">
-      <img src="pf/sketch.png" alt="Hand sketches of the rim and tire cross-sections with dimensions">
+      <img src="pf/sketch.jpg" alt="Hand sketches of the rim and tire cross-sections with dimensions">
       <figcaption>Working sketches — cross-sections, radii (large wheel R≈26 in, small R≈9 in), and the spoke-hole layout.</figcaption>
     </figure>
   </section>
